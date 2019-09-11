@@ -14,14 +14,6 @@ namespace QuanLyVuonThu
 {
     public partial class fMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public void change()
-        {
-
-        }
-        public void request()
-        {
-            MessageBox.Show("b");
-        }
         public bool IsDate(string str)
         {
             Regex regex = new Regex(@"^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$");
