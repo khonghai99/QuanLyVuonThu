@@ -14,6 +14,10 @@ namespace QuanLyVuonThu
 {
     public partial class fMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public void change()
+        {
+
+        }
         public void request()
         {
             MessageBox.Show("b");
