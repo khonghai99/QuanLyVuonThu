@@ -1517,6 +1517,7 @@
             // 
             // pbThu
             // 
+            this.pbThu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbThu.Location = new System.Drawing.Point(719, 10);
             this.pbThu.Name = "pbThu";
             this.pbThu.Size = new System.Drawing.Size(103, 110);
