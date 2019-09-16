@@ -216,9 +216,6 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.tpTheoLoai = new System.Windows.Forms.TabPage();
-            this.btnExportTheoLoai = new System.Windows.Forms.Button();
-            this.dtgvDSThuTheoLoai = new System.Windows.Forms.DataGridView();
-            this.label60 = new System.Windows.Forms.Label();
             this.tpSachDo = new System.Windows.Forms.TabPage();
             this.btnExportSachDo = new System.Windows.Forms.Button();
             this.dtgvDSThuTrongSachDo = new System.Windows.Forms.DataGridView();
@@ -239,6 +236,8 @@
             this.btnExportChiPhiMaThu = new System.Windows.Forms.Button();
             this.dtgvChiPhiMaThu = new System.Windows.Forms.DataGridView();
             this.label65 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).BeginInit();
@@ -269,7 +268,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tpTheoLoai.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSThuTheoLoai)).BeginInit();
             this.tpSachDo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSThuTrongSachDo)).BeginInit();
             this.tpOm.SuspendLayout();
@@ -2312,8 +2310,7 @@
             // tpTheoLoai
             // 
             this.tpTheoLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tpTheoLoai.Controls.Add(this.btnExportTheoLoai);
-            this.tpTheoLoai.Controls.Add(this.dtgvDSThuTheoLoai);
+            this.tpTheoLoai.Controls.Add(this.crystalReportViewer1);
             this.tpTheoLoai.Controls.Add(this.label60);
             this.tpTheoLoai.Location = new System.Drawing.Point(4, 23);
             this.tpTheoLoai.Name = "tpTheoLoai";
@@ -2321,41 +2318,6 @@
             this.tpTheoLoai.Size = new System.Drawing.Size(840, 359);
             this.tpTheoLoai.TabIndex = 7;
             this.tpTheoLoai.Text = "Theo Loài";
-            // 
-            // btnExportTheoLoai
-            // 
-            this.btnExportTheoLoai.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportTheoLoai.ForeColor = System.Drawing.Color.Green;
-            this.btnExportTheoLoai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportTheoLoai.ImageIndex = 8;
-            this.btnExportTheoLoai.ImageList = this.imgL1;
-            this.btnExportTheoLoai.Location = new System.Drawing.Point(757, 9);
-            this.btnExportTheoLoai.Name = "btnExportTheoLoai";
-            this.btnExportTheoLoai.Size = new System.Drawing.Size(75, 23);
-            this.btnExportTheoLoai.TabIndex = 2;
-            this.btnExportTheoLoai.Text = "Export";
-            this.btnExportTheoLoai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportTheoLoai.UseVisualStyleBackColor = true;
-            // 
-            // dtgvDSThuTheoLoai
-            // 
-            this.dtgvDSThuTheoLoai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDSThuTheoLoai.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtgvDSThuTheoLoai.Location = new System.Drawing.Point(3, 35);
-            this.dtgvDSThuTheoLoai.Name = "dtgvDSThuTheoLoai";
-            this.dtgvDSThuTheoLoai.Size = new System.Drawing.Size(834, 321);
-            this.dtgvDSThuTheoLoai.TabIndex = 1;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.ForeColor = System.Drawing.Color.Red;
-            this.label60.Location = new System.Drawing.Point(332, 9);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(201, 19);
-            this.label60.TabIndex = 0;
-            this.label60.Text = "Danh sách thú theo loài";
             // 
             // tpSachDo
             // 
@@ -2597,6 +2559,28 @@
             this.label65.TabIndex = 3;
             this.label65.Text = "Chi phí một ngày theo mã thú";
             // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.ForeColor = System.Drawing.Color.Red;
+            this.label60.Location = new System.Drawing.Point(332, 9);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(201, 19);
+            this.label60.TabIndex = 0;
+            this.label60.Text = "Danh sách thú theo loài";
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 31);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(834, 325);
+            this.crystalReportViewer1.TabIndex = 1;
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2651,7 +2635,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tpTheoLoai.ResumeLayout(false);
             this.tpTheoLoai.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSThuTheoLoai)).EndInit();
             this.tpSachDo.ResumeLayout(false);
             this.tpSachDo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSThuTrongSachDo)).EndInit();
@@ -2864,9 +2847,6 @@
         private System.Windows.Forms.TabPage tpChiTiet;
         private System.Windows.Forms.TabPage tpMotThang;
         private System.Windows.Forms.TabPage tpMaThu;
-        private System.Windows.Forms.Button btnExportTheoLoai;
-        private System.Windows.Forms.DataGridView dtgvDSThuTheoLoai;
-        private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Button btnExportSachDo;
         private System.Windows.Forms.DataGridView dtgvDSThuTrongSachDo;
         private System.Windows.Forms.Label label61;
@@ -2883,5 +2863,7 @@
         private System.Windows.Forms.DataGridView dtgvChiPhiMaThu;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.Label label60;
     }
 }
