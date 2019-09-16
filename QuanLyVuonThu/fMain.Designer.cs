@@ -216,6 +216,8 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.tpTheoLoai = new System.Windows.Forms.TabPage();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.label60 = new System.Windows.Forms.Label();
             this.tpSachDo = new System.Windows.Forms.TabPage();
             this.btnExportSachDo = new System.Windows.Forms.Button();
             this.dtgvDSThuTrongSachDo = new System.Windows.Forms.DataGridView();
@@ -236,8 +238,6 @@
             this.btnExportChiPhiMaThu = new System.Windows.Forms.Button();
             this.dtgvChiPhiMaThu = new System.Windows.Forms.DataGridView();
             this.label65 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).BeginInit();
@@ -2319,6 +2319,29 @@
             this.tpTheoLoai.TabIndex = 7;
             this.tpTheoLoai.Text = "Theo Loài";
             // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 31);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(834, 325);
+            this.crystalReportViewer1.TabIndex = 1;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.ForeColor = System.Drawing.Color.Red;
+            this.label60.Location = new System.Drawing.Point(332, 9);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(201, 19);
+            this.label60.TabIndex = 0;
+            this.label60.Text = "Danh sách thú theo loài";
+            // 
             // tpSachDo
             // 
             this.tpSachDo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -2558,28 +2581,6 @@
             this.label65.Size = new System.Drawing.Size(250, 19);
             this.label65.TabIndex = 3;
             this.label65.Text = "Chi phí một ngày theo mã thú";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.ForeColor = System.Drawing.Color.Red;
-            this.label60.Location = new System.Drawing.Point(332, 9);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(201, 19);
-            this.label60.TabIndex = 0;
-            this.label60.Text = "Danh sách thú theo loài";
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 31);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(834, 325);
-            this.crystalReportViewer1.TabIndex = 1;
             // 
             // fMain
             // 

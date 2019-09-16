@@ -281,19 +281,11 @@ namespace QuanLyVuonThu {
             
             private global::System.Data.DataColumn columnTenLoai;
             
-            private global::System.Data.DataColumn columnMaThu;
+            private global::System.Data.DataColumn columnMaLoai;
             
             private global::System.Data.DataColumn columnTenThu;
             
             private global::System.Data.DataColumn columnSoLuong;
-            
-            private global::System.Data.DataColumn columnSachDo;
-            
-            private global::System.Data.DataColumn columnTenKhoaHoc;
-            
-            private global::System.Data.DataColumn columnTenTA;
-            
-            private global::System.Data.DataColumn columnTenTV;
             
             private global::System.Data.DataColumn columnGioiTinh;
             
@@ -352,9 +344,9 @@ namespace QuanLyVuonThu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MaThuColumn {
+            public global::System.Data.DataColumn MaLoaiColumn {
                 get {
-                    return this.columnMaThu;
+                    return this.columnMaLoai;
                 }
             }
             
@@ -371,38 +363,6 @@ namespace QuanLyVuonThu {
             public global::System.Data.DataColumn SoLuongColumn {
                 get {
                     return this.columnSoLuong;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SachDoColumn {
-                get {
-                    return this.columnSachDo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TenKhoaHocColumn {
-                get {
-                    return this.columnTenKhoaHoc;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TenTAColumn {
-                get {
-                    return this.columnTenTA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TenTVColumn {
-                get {
-                    return this.columnTenTV;
                 }
             }
             
@@ -499,17 +459,13 @@ namespace QuanLyVuonThu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TheoLoaiRow AddTheoLoaiRow(string TenLoai, string MaThu, string TenThu, int SoLuong, string SachDo, string TenKhoaHoc, string TenTA, string TenTV, string GioiTinh, string KieuSinh, System.DateTime NgayVao, string NguonGoc, string DacDiem, System.DateTime NgaySinh, double TuoiTho) {
+            public TheoLoaiRow AddTheoLoaiRow(string TenLoai, string MaLoai, string TenThu, int SoLuong, string GioiTinh, string KieuSinh, System.DateTime NgayVao, string NguonGoc, string DacDiem, System.DateTime NgaySinh, double TuoiTho) {
                 TheoLoaiRow rowTheoLoaiRow = ((TheoLoaiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TenLoai,
-                        MaThu,
+                        MaLoai,
                         TenThu,
                         SoLuong,
-                        SachDo,
-                        TenKhoaHoc,
-                        TenTA,
-                        TenTV,
                         GioiTinh,
                         KieuSinh,
                         NgayVao,
@@ -524,9 +480,9 @@ namespace QuanLyVuonThu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TheoLoaiRow FindByMaThu(string MaThu) {
+            public TheoLoaiRow FindByMaLoai(string MaLoai) {
                 return ((TheoLoaiRow)(this.Rows.Find(new object[] {
-                            MaThu})));
+                            MaLoai})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -547,13 +503,9 @@ namespace QuanLyVuonThu {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnTenLoai = base.Columns["TenLoai"];
-                this.columnMaThu = base.Columns["MaThu"];
+                this.columnMaLoai = base.Columns["MaLoai"];
                 this.columnTenThu = base.Columns["TenThu"];
                 this.columnSoLuong = base.Columns["SoLuong"];
-                this.columnSachDo = base.Columns["SachDo"];
-                this.columnTenKhoaHoc = base.Columns["TenKhoaHoc"];
-                this.columnTenTA = base.Columns["TenTA"];
-                this.columnTenTV = base.Columns["TenTV"];
                 this.columnGioiTinh = base.Columns["GioiTinh"];
                 this.columnKieuSinh = base.Columns["KieuSinh"];
                 this.columnNgayVao = base.Columns["NgayVao"];
@@ -568,20 +520,12 @@ namespace QuanLyVuonThu {
             private void InitClass() {
                 this.columnTenLoai = new global::System.Data.DataColumn("TenLoai", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTenLoai);
-                this.columnMaThu = new global::System.Data.DataColumn("MaThu", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMaThu);
+                this.columnMaLoai = new global::System.Data.DataColumn("MaLoai", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaLoai);
                 this.columnTenThu = new global::System.Data.DataColumn("TenThu", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTenThu);
                 this.columnSoLuong = new global::System.Data.DataColumn("SoLuong", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoLuong);
-                this.columnSachDo = new global::System.Data.DataColumn("SachDo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSachDo);
-                this.columnTenKhoaHoc = new global::System.Data.DataColumn("TenKhoaHoc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTenKhoaHoc);
-                this.columnTenTA = new global::System.Data.DataColumn("TenTA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTenTA);
-                this.columnTenTV = new global::System.Data.DataColumn("TenTV", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTenTV);
                 this.columnGioiTinh = new global::System.Data.DataColumn("GioiTinh", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGioiTinh);
                 this.columnKieuSinh = new global::System.Data.DataColumn("KieuSinh", typeof(string), null, global::System.Data.MappingType.Element);
@@ -597,18 +541,14 @@ namespace QuanLyVuonThu {
                 this.columnTuoiTho = new global::System.Data.DataColumn("TuoiTho", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTuoiTho);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMaThu}, true));
+                                this.columnMaLoai}, true));
                 this.columnTenLoai.AllowDBNull = false;
                 this.columnTenLoai.MaxLength = 50;
-                this.columnMaThu.AllowDBNull = false;
-                this.columnMaThu.Unique = true;
-                this.columnMaThu.MaxLength = 50;
+                this.columnMaLoai.AllowDBNull = false;
+                this.columnMaLoai.Unique = true;
+                this.columnMaLoai.MaxLength = 50;
                 this.columnTenThu.AllowDBNull = false;
                 this.columnTenThu.MaxLength = 50;
-                this.columnSachDo.MaxLength = 50;
-                this.columnTenKhoaHoc.MaxLength = 50;
-                this.columnTenTA.MaxLength = 50;
-                this.columnTenTV.MaxLength = 50;
                 this.columnGioiTinh.MaxLength = 50;
                 this.columnKieuSinh.MaxLength = 50;
                 this.columnNguonGoc.MaxLength = 50;
@@ -766,12 +706,12 @@ namespace QuanLyVuonThu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string MaThu {
+            public string MaLoai {
                 get {
-                    return ((string)(this[this.tableTheoLoai.MaThuColumn]));
+                    return ((string)(this[this.tableTheoLoai.MaLoaiColumn]));
                 }
                 set {
-                    this[this.tableTheoLoai.MaThuColumn] = value;
+                    this[this.tableTheoLoai.MaLoaiColumn] = value;
                 }
             }
             
@@ -799,70 +739,6 @@ namespace QuanLyVuonThu {
                 }
                 set {
                     this[this.tableTheoLoai.SoLuongColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SachDo {
-                get {
-                    try {
-                        return ((string)(this[this.tableTheoLoai.SachDoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SachDo\' in table \'TheoLoai\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTheoLoai.SachDoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string TenKhoaHoc {
-                get {
-                    try {
-                        return ((string)(this[this.tableTheoLoai.TenKhoaHocColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TenKhoaHoc\' in table \'TheoLoai\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTheoLoai.TenKhoaHocColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string TenTA {
-                get {
-                    try {
-                        return ((string)(this[this.tableTheoLoai.TenTAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TenTA\' in table \'TheoLoai\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTheoLoai.TenTAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string TenTV {
-                get {
-                    try {
-                        return ((string)(this[this.tableTheoLoai.TenTVColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TenTV\' in table \'TheoLoai\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTheoLoai.TenTVColumn] = value;
                 }
             }
             
@@ -988,54 +864,6 @@ namespace QuanLyVuonThu {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSoLuongNull() {
                 this[this.tableTheoLoai.SoLuongColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSachDoNull() {
-                return this.IsNull(this.tableTheoLoai.SachDoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSachDoNull() {
-                this[this.tableTheoLoai.SachDoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTenKhoaHocNull() {
-                return this.IsNull(this.tableTheoLoai.TenKhoaHocColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTenKhoaHocNull() {
-                this[this.tableTheoLoai.TenKhoaHocColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTenTANull() {
-                return this.IsNull(this.tableTheoLoai.TenTAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTenTANull() {
-                this[this.tableTheoLoai.TenTAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTenTVNull() {
-                return this.IsNull(this.tableTheoLoai.TenTVColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTenTVNull() {
-                this[this.tableTheoLoai.TenTVColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1283,13 +1111,9 @@ namespace QuanLyVuonThu.DataThuTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TheoLoai";
             tableMapping.ColumnMappings.Add("TenLoai", "TenLoai");
-            tableMapping.ColumnMappings.Add("MaThu", "MaThu");
+            tableMapping.ColumnMappings.Add("MaLoai", "MaLoai");
             tableMapping.ColumnMappings.Add("TenThu", "TenThu");
             tableMapping.ColumnMappings.Add("SoLuong", "SoLuong");
-            tableMapping.ColumnMappings.Add("SachDo", "SachDo");
-            tableMapping.ColumnMappings.Add("TenKhoaHoc", "TenKhoaHoc");
-            tableMapping.ColumnMappings.Add("TenTA", "TenTA");
-            tableMapping.ColumnMappings.Add("TenTV", "TenTV");
             tableMapping.ColumnMappings.Add("GioiTinh", "GioiTinh");
             tableMapping.ColumnMappings.Add("KieuSinh", "KieuSinh");
             tableMapping.ColumnMappings.Add("NgayVao", "NgayVao");
@@ -1313,9 +1137,10 @@ namespace QuanLyVuonThu.DataThuTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Loai.TenLoai, Thu.MaThu, Thu.TenThu, Thu.SoLuong, Thu.SachDo, Thu.TenKhoaHoc, Thu.TenTA, Thu.TenTV, Thu.GioiTinh, Thu.KieuSinh, Thu.NgayVao, Thu.NguonGoc, Thu.DacDiem, Thu.NgaySinh, Thu.TuoiTho
-FROM            Loai INNER JOIN
-                         Thu ON Loai.MaLoai = Thu.MaLoai";
+            this._commandCollection[0].CommandText = "SELECT        Loai.TenLoai, Loai.MaLoai, Thu.TenThu, Thu.SoLuong, Thu.GioiTinh, T" +
+                "hu.KieuSinh, Thu.NgayVao, Thu.NguonGoc, Thu.DacDiem, Thu.NgaySinh, Thu.TuoiTho\r\n" +
+                "FROM            Loai INNER JOIN\r\n                         Thu ON Loai.MaLoai = T" +
+                "hu.MaLoai";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

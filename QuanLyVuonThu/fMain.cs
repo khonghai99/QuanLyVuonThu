@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using System.Text.RegularExpressions;
+using CrystalDecisions.Windows.Forms;
 
 namespace QuanLyVuonThu
 {
@@ -49,8 +50,8 @@ namespace QuanLyVuonThu
             tclDS.ItemSize = new Size(0, 1);
             tclDS.SizeMode = TabSizeMode.Fixed;
             //Gọi pt DocBang lấy dữ liệu của bảng tblChatLieu đổ vào DataTable
-            DataTable dtChatLieu = dtBase.DocInBang("select * from Thu");
-            dtgvThu.DataSource = dtChatLieu;
+            DataTable dtThu = dtBase.DocInBang("select * from Thu");
+            dtgvThu.DataSource = dtThu;
 
             //Định dạng dataGrid
             dtgvThu.Columns[0].HeaderText = "Mã thú";
@@ -71,7 +72,7 @@ namespace QuanLyVuonThu
             dtgvThu.Columns[15].HeaderText = "Tuổi thọ";
 
             dtgvThu.BackgroundColor = Color.LightBlue;
-            dtChatLieu.Dispose();
+            dtThu.Dispose();
 
         }
 
@@ -132,7 +133,16 @@ namespace QuanLyVuonThu
 
         private void BbtnitLoai_ItemClick(object sender, ItemClickEventArgs e)
         {
+            DataTable dtThu = dtBase.DocInBang("SELECT Loai.TenLoai, Loai.MaLoai," +
+                " Thu.TenThu, Thu.SoLuong, Thu.GioiTinh, Thu.KieuSinh, Thu.NgayVao," +
+                " Thu.NguonGoc, Thu.DacDiem, Thu.NgaySinh, Thu.TuoiTho" +
+                " FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
+            rpTheoLoai rp = new rpTheoLoai();
+            rp.SetDataSource(dtThu);
+            crystalReportViewer1.ReportSource = rp;
+            
             tclDS.SelectTab(7);
+
         }
 
         private void BbtnitSachDo_ItemClick(object sender, ItemClickEventArgs e)
