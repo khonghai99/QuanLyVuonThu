@@ -88,13 +88,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="rpTheoLoai.cs">
+    <Compile Include="Report\ThuTheoLoai\rpTheoLoai.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rpTheoLoai.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataTheoLoai.Designer.cs">
+    <Compile Include="Report\ThuTheoLoai\DataTheoLoai.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataTheoLoai.xsd</DependentUpon>
@@ -123,7 +123,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="rpTheoLoai.rpt">
+    <EmbeddedResource Include="Report\ThuTheoLoai\rpTheoLoai.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpTheoLoai.cs</LastGenOutput>
     </EmbeddedResource>
@@ -147,15 +147,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-    <None Include="DataTheoLoai.xsc">
+    <None Include="Report\ThuTheoLoai\DataTheoLoai.xsc">
       <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </None>
-    <None Include="DataTheoLoai.xsd">
+    <None Include="Report\ThuTheoLoai\DataTheoLoai.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataTheoLoai.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataTheoLoai.xss">
+    <None Include="Report\ThuTheoLoai\DataTheoLoai.xss">
       <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -187,9 +187,7 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Report\Thu\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
