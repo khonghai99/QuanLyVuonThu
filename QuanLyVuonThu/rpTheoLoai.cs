@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyVuonThu.Report.ThuTheoLoai {
+namespace QuanLyVuonThu {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace QuanLyVuonThu.Report.ThuTheoLoai {
         
         public override string FullResourceName {
             get {
-                return "QuanLyVuonThu.Report.ThuTheoLoai.rpTheoLoai.rpt";
+                return "QuanLyVuonThu.rpTheoLoai.rpt";
             }
             set {
                 // Do nothing

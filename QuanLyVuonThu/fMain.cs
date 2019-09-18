@@ -134,9 +134,8 @@ namespace QuanLyVuonThu
         private void BbtnitLoai_ItemClick(object sender, ItemClickEventArgs e)
         {
             DataTable dtThu = dtBase.DocInBang("SELECT Loai.TenLoai, Loai.MaLoai," +
-                " Thu.TenThu, Thu.SoLuong, Thu.GioiTinh, Thu.KieuSinh, Thu.NgayVao," +
-                " Thu.NguonGoc, Thu.DacDiem, Thu.NgaySinh, Thu.TuoiTho" +
-                " FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
+                " Thu.TenThu, Thu.SoLuong, Thu.GioiTinh, Thu.KieuSinh,Thu.NguonGoc," +
+                " Thu.DacDiem FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
             rpTheoLoai rp = new rpTheoLoai();
             rp.SetDataSource(dtThu);
             crystalReportViewer1.ReportSource = rp;

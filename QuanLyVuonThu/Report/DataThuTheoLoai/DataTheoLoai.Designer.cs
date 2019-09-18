@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace QuanLyVuonThu.Report.ThuTheoLoai {
+namespace QuanLyVuonThu.Report.DataThuTheoLoai {
     
     
     /// <summary>
@@ -986,7 +986,7 @@ namespace QuanLyVuonThu.Report.ThuTheoLoai {
         }
     }
 }
-namespace QuanLyVuonThu.Report.ThuTheoLoai.DataThuTableAdapters {
+namespace QuanLyVuonThu.Report.DataThuTheoLoai.DataThuTableAdapters {
     
     
     /// <summary>
