@@ -12,20 +12,27 @@ namespace QuanLyVuonThu
     {
         SqlConnection conn = null;
         //Hàm mở kết nối CSDL
-        private void KetNoiCSDL()
+        public void KetNoiCSDL()
         {
             conn = DBUtils.GetDBConnection();
             if (conn.State != ConnectionState.Open)
                 conn.Open();
         }
-        private void DongKetNoiCSDL()
+        public SqlCommand command(string sql)
+        {
+            KetNoiCSDL();
+            SqlCommand command = new SqlCommand(sql, conn);
+            return command;
+
+        }
+        public void DongKetNoiCSDL()
         {
             if (conn.State != ConnectionState.Closed)
                 conn.Close();
             conn.Dispose();
         }
         //Hàm thực thi câu lệnh dạng Select trả về một DataTable
-        public DataTable DocInBang(string sql)
+        public DataTable DocDL(string sql)
         {
             DataTable dtBang = new DataTable();
             KetNoiCSDL();

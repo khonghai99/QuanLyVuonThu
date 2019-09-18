@@ -20,7 +20,7 @@ namespace QuanLyVuonThu
         {
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Springtime");
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Valentine");
         }
 
         private void BtnDangNhap_Click(object sender, EventArgs e)
