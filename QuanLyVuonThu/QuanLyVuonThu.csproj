@@ -88,10 +88,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataThu.Designer.cs">
+    <Compile Include="rpTheoLoai.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataThu.xsd</DependentUpon>
+      <DependentUpon>rpTheoLoai.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\DataThuTheoLoai\DataTheoLoai.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </Compile>
     <Compile Include="connectionDB\DBSQLServerUtils.cs" />
     <Compile Include="connectionDB\DBUtils.cs" />
@@ -118,11 +124,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="rpTheoLoai.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpTheoLoai.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fMain.resx">
       <DependentUpon>fMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="fDoiMatKhau.resx">
       <DependentUpon>fDoiMatKhau.cs</DependentUpon>
@@ -138,16 +149,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-    <None Include="DataThu.xsc">
-      <DependentUpon>DataThu.xsd</DependentUpon>
+    <None Include="Report\DataThuTheoLoai\DataTheoLoai.xsc">
+      <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </None>
-    <None Include="DataThu.xsd">
+    <None Include="Report\DataThuTheoLoai\DataTheoLoai.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataThu.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataTheoLoai.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataThu.xss">
-      <DependentUpon>DataThu.xsd</DependentUpon>
+    <None Include="Report\DataThuTheoLoai\DataTheoLoai.xss">
+      <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -175,6 +186,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

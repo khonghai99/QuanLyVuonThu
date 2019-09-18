@@ -12,6 +12,8 @@ using System.Text.RegularExpressions;
 using QuanLyVuonThu.Model;
 using System.IO;
 using System.Data.SqlClient;
+using CrystalDecisions.Windows.Forms;
+
 
 namespace QuanLyVuonThu
 {
@@ -107,6 +109,8 @@ namespace QuanLyVuonThu
                 }
             }
             dtBase.DongKetNoiCSDL();
+            
+
         }
 
         private void BbtnDangXuat_ItemClick(object sender, ItemClickEventArgs e)
@@ -166,7 +170,15 @@ namespace QuanLyVuonThu
 
         private void BbtnitLoai_ItemClick(object sender, ItemClickEventArgs e)
         {
+            DataTable dtThu = dtBase.DocDL("SELECT Loai.TenLoai, Loai.MaLoai," +
+                " Thu.TenThu, Thu.SoLuong, Thu.GioiTinh, Thu.KieuSinh,Thu.NguonGoc," +
+                " Thu.DacDiem FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
+            rpTheoLoai rp = new rpTheoLoai();
+            rp.SetDataSource(dtThu);
+            crystalReportViewer1.ReportSource = rp;
+            
             tclDS.SelectTab(7);
+
         }
 
         private void BbtnitSachDo_ItemClick(object sender, ItemClickEventArgs e)
