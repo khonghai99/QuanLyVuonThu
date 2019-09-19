@@ -107,7 +107,6 @@
             this.dtpNgaySinhThu = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayVaoThu = new System.Windows.Forms.DateTimePicker();
             this.label66 = new System.Windows.Forms.Label();
-            this.btnHuyThu = new System.Windows.Forms.Button();
             this.btnLuuThu = new System.Windows.Forms.Button();
             this.btnXoaThu = new System.Windows.Forms.Button();
             this.btnSuaThu = new System.Windows.Forms.Button();
@@ -124,7 +123,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.txtNguonGoc = new System.Windows.Forms.TextBox();
-            this.txtGioiTinhThu = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -135,8 +133,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtTenKHThu = new System.Windows.Forms.TextBox();
-            this.txtSachDoThu = new System.Windows.Forms.TextBox();
-            this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.txtTenThu = new System.Windows.Forms.TextBox();
             this.txtMaThu = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -217,6 +213,8 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
+            this.tpTheoLoai = new System.Windows.Forms.TabPage();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tpSachDo = new System.Windows.Forms.TabPage();
             this.btnExportSachDo = new System.Windows.Forms.Button();
             this.dtgvDSThuTrongSachDo = new System.Windows.Forms.DataGridView();
@@ -237,8 +235,25 @@
             this.btnExportChiPhiMaThu = new System.Windows.Forms.Button();
             this.dtgvChiPhiMaThu = new System.Windows.Forms.DataGridView();
             this.label65 = new System.Windows.Forms.Label();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.tpTheoLoai = new System.Windows.Forms.TabPage();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.txtLyDoVao = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.cbbThucAnSang = new System.Windows.Forms.ComboBox();
+            this.cbbThucAnTrua = new System.Windows.Forms.ComboBox();
+            this.cbbThucAntoi = new System.Windows.Forms.ComboBox();
+            this.cbbSLThucAnSang = new System.Windows.Forms.ComboBox();
+            this.cbbSLThucAnTrua = new System.Windows.Forms.ComboBox();
+            this.cbbSLThucAnToi = new System.Windows.Forms.ComboBox();
+            this.cbbSoLuongThu = new System.Windows.Forms.ComboBox();
+            this.cbbSachDoThu = new System.Windows.Forms.ComboBox();
+            this.cbbGioiTinhThu = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).BeginInit();
@@ -268,6 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tpTheoLoai.SuspendLayout();
             this.tpSachDo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSThuTrongSachDo)).BeginInit();
             this.tpOm.SuspendLayout();
@@ -278,7 +294,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiPhiMotThang)).BeginInit();
             this.tpMaThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiPhiMaThu)).BeginInit();
-            this.tpTheoLoai.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -1066,12 +1081,28 @@
             // tpThu
             // 
             this.tpThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tpThu.Controls.Add(this.cbbGioiTinhThu);
+            this.tpThu.Controls.Add(this.cbbSachDoThu);
+            this.tpThu.Controls.Add(this.cbbSoLuongThu);
+            this.tpThu.Controls.Add(this.cbbSLThucAnToi);
+            this.tpThu.Controls.Add(this.cbbSLThucAnTrua);
+            this.tpThu.Controls.Add(this.cbbSLThucAnSang);
+            this.tpThu.Controls.Add(this.cbbThucAntoi);
+            this.tpThu.Controls.Add(this.cbbThucAnTrua);
+            this.tpThu.Controls.Add(this.cbbThucAnSang);
+            this.tpThu.Controls.Add(this.label72);
+            this.tpThu.Controls.Add(this.label71);
+            this.tpThu.Controls.Add(this.label70);
+            this.tpThu.Controls.Add(this.txtLyDoVao);
+            this.tpThu.Controls.Add(this.label69);
+            this.tpThu.Controls.Add(this.label68);
+            this.tpThu.Controls.Add(this.label67);
+            this.tpThu.Controls.Add(this.label60);
             this.tpThu.Controls.Add(this.cbbMaChuong);
             this.tpThu.Controls.Add(this.cbbMaLoai);
             this.tpThu.Controls.Add(this.dtpNgaySinhThu);
             this.tpThu.Controls.Add(this.dtpNgayVaoThu);
             this.tpThu.Controls.Add(this.label66);
-            this.tpThu.Controls.Add(this.btnHuyThu);
             this.tpThu.Controls.Add(this.btnLuuThu);
             this.tpThu.Controls.Add(this.btnXoaThu);
             this.tpThu.Controls.Add(this.btnSuaThu);
@@ -1087,7 +1118,6 @@
             this.tpThu.Controls.Add(this.label24);
             this.tpThu.Controls.Add(this.label23);
             this.tpThu.Controls.Add(this.txtNguonGoc);
-            this.tpThu.Controls.Add(this.txtGioiTinhThu);
             this.tpThu.Controls.Add(this.label20);
             this.tpThu.Controls.Add(this.label21);
             this.tpThu.Controls.Add(this.label22);
@@ -1098,8 +1128,6 @@
             this.tpThu.Controls.Add(this.label18);
             this.tpThu.Controls.Add(this.label19);
             this.tpThu.Controls.Add(this.txtTenKHThu);
-            this.tpThu.Controls.Add(this.txtSachDoThu);
-            this.tpThu.Controls.Add(this.txtSoLuong);
             this.tpThu.Controls.Add(this.txtTenThu);
             this.tpThu.Controls.Add(this.txtMaThu);
             this.tpThu.Controls.Add(this.label10);
@@ -1121,7 +1149,7 @@
             // cbbMaChuong
             // 
             this.cbbMaChuong.FormattingEnabled = true;
-            this.cbbMaChuong.Location = new System.Drawing.Point(210, 191);
+            this.cbbMaChuong.Location = new System.Drawing.Point(133, 196);
             this.cbbMaChuong.Name = "cbbMaChuong";
             this.cbbMaChuong.Size = new System.Drawing.Size(139, 24);
             this.cbbMaChuong.TabIndex = 84;
@@ -1129,15 +1157,16 @@
             // cbbMaLoai
             // 
             this.cbbMaLoai.FormattingEnabled = true;
-            this.cbbMaLoai.Location = new System.Drawing.Point(210, 140);
+            this.cbbMaLoai.Location = new System.Drawing.Point(133, 148);
             this.cbbMaLoai.Name = "cbbMaLoai";
             this.cbbMaLoai.Size = new System.Drawing.Size(139, 24);
             this.cbbMaLoai.TabIndex = 83;
+            this.cbbMaLoai.SelectedIndexChanged += new System.EventHandler(this.CbbMaLoai_SelectedIndexChanged);
             // 
             // dtpNgaySinhThu
             // 
             this.dtpNgaySinhThu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaySinhThu.Location = new System.Drawing.Point(1335, 194);
+            this.dtpNgaySinhThu.Location = new System.Drawing.Point(1017, 194);
             this.dtpNgaySinhThu.Name = "dtpNgaySinhThu";
             this.dtpNgaySinhThu.Size = new System.Drawing.Size(139, 23);
             this.dtpNgaySinhThu.TabIndex = 82;
@@ -1145,7 +1174,7 @@
             // dtpNgayVaoThu
             // 
             this.dtpNgayVaoThu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayVaoThu.Location = new System.Drawing.Point(1335, 95);
+            this.dtpNgayVaoThu.Location = new System.Drawing.Point(1017, 95);
             this.dtpNgayVaoThu.Name = "dtpNgayVaoThu";
             this.dtpNgayVaoThu.Size = new System.Drawing.Size(139, 23);
             this.dtpNgayVaoThu.TabIndex = 81;
@@ -1154,41 +1183,27 @@
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(66, 191);
+            this.label66.Location = new System.Drawing.Point(29, 194);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(87, 18);
             this.label66.TabIndex = 79;
             this.label66.Text = "Mã chuồng";
             // 
-            // btnHuyThu
-            // 
-            this.btnHuyThu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuyThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHuyThu.ImageIndex = 2;
-            this.btnHuyThu.ImageList = this.imgL1;
-            this.btnHuyThu.Location = new System.Drawing.Point(728, 239);
-            this.btnHuyThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnHuyThu.Name = "btnHuyThu";
-            this.btnHuyThu.Size = new System.Drawing.Size(87, 28);
-            this.btnHuyThu.TabIndex = 78;
-            this.btnHuyThu.Text = "Hủy";
-            this.btnHuyThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHuyThu.UseVisualStyleBackColor = true;
-            this.btnHuyThu.Click += new System.EventHandler(this.BtnHuyThu_Click);
-            // 
             // btnLuuThu
             // 
+            this.btnLuuThu.Enabled = false;
             this.btnLuuThu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuuThu.ImageIndex = 3;
             this.btnLuuThu.ImageList = this.imgL1;
-            this.btnLuuThu.Location = new System.Drawing.Point(568, 239);
+            this.btnLuuThu.Location = new System.Drawing.Point(650, 240);
             this.btnLuuThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLuuThu.Name = "btnLuuThu";
             this.btnLuuThu.Size = new System.Drawing.Size(87, 28);
             this.btnLuuThu.TabIndex = 77;
             this.btnLuuThu.Text = "Lưu";
             this.btnLuuThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.btnLuuThu, "thêm mới thông tin thu");
             this.btnLuuThu.UseVisualStyleBackColor = true;
             this.btnLuuThu.Click += new System.EventHandler(this.BtnLuuThu_Click);
             // 
@@ -1198,29 +1213,32 @@
             this.btnXoaThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoaThu.ImageIndex = 5;
             this.btnXoaThu.ImageList = this.imgL1;
-            this.btnXoaThu.Location = new System.Drawing.Point(418, 238);
+            this.btnXoaThu.Location = new System.Drawing.Point(479, 240);
             this.btnXoaThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnXoaThu.Name = "btnXoaThu";
             this.btnXoaThu.Size = new System.Drawing.Size(87, 28);
             this.btnXoaThu.TabIndex = 76;
             this.btnXoaThu.Text = "Xóa";
             this.btnXoaThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.btnXoaThu, "xóa thú khỏi danh sách");
             this.btnXoaThu.UseVisualStyleBackColor = true;
             this.btnXoaThu.Click += new System.EventHandler(this.BtnXoaThu_Click);
             // 
             // btnSuaThu
             // 
+            this.btnSuaThu.Enabled = false;
             this.btnSuaThu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuaThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSuaThu.ImageIndex = 0;
             this.btnSuaThu.ImageList = this.imgL1;
-            this.btnSuaThu.Location = new System.Drawing.Point(241, 236);
+            this.btnSuaThu.Location = new System.Drawing.Point(265, 238);
             this.btnSuaThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSuaThu.Name = "btnSuaThu";
             this.btnSuaThu.Size = new System.Drawing.Size(87, 28);
             this.btnSuaThu.TabIndex = 75;
             this.btnSuaThu.Text = "Sửa";
             this.btnSuaThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.btnSuaThu, "sửa thông tin thú");
             this.btnSuaThu.UseVisualStyleBackColor = true;
             this.btnSuaThu.Click += new System.EventHandler(this.BtnSuaThu_Click);
             // 
@@ -1237,6 +1255,7 @@
             this.btnThemThu.TabIndex = 74;
             this.btnThemThu.Text = "Thêm";
             this.btnThemThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.btnThemThu, "thêm animal");
             this.btnThemThu.UseVisualStyleBackColor = true;
             this.btnThemThu.Click += new System.EventHandler(this.BtnThemThu_Click);
             // 
@@ -1306,7 +1325,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(1198, 194);
+            this.label26.Location = new System.Drawing.Point(899, 199);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(82, 18);
             this.label26.TabIndex = 71;
@@ -1315,7 +1334,7 @@
             // txtTuoiTho
             // 
             this.txtTuoiTho.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTuoiTho.Location = new System.Drawing.Point(991, 194);
+            this.txtTuoiTho.Location = new System.Drawing.Point(717, 196);
             this.txtTuoiTho.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTuoiTho.Name = "txtTuoiTho";
             this.txtTuoiTho.Size = new System.Drawing.Size(139, 26);
@@ -1325,7 +1344,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(847, 197);
+            this.label25.Location = new System.Drawing.Point(622, 192);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(68, 18);
             this.label25.TabIndex = 69;
@@ -1334,7 +1353,7 @@
             // txtDacDiemThu
             // 
             this.txtDacDiemThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDacDiemThu.Location = new System.Drawing.Point(613, 194);
+            this.txtDacDiemThu.Location = new System.Drawing.Point(430, 194);
             this.txtDacDiemThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDacDiemThu.Name = "txtDacDiemThu";
             this.txtDacDiemThu.Size = new System.Drawing.Size(139, 26);
@@ -1344,7 +1363,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(428, 197);
+            this.label24.Location = new System.Drawing.Point(330, 192);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(77, 18);
             this.label24.TabIndex = 67;
@@ -1354,7 +1373,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(1689, 270);
+            this.label23.Location = new System.Drawing.Point(1749, 263);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(44, 21);
             this.label23.TabIndex = 66;
@@ -1363,26 +1382,17 @@
             // txtNguonGoc
             // 
             this.txtNguonGoc.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNguonGoc.Location = new System.Drawing.Point(1335, 141);
+            this.txtNguonGoc.Location = new System.Drawing.Point(1017, 146);
             this.txtNguonGoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNguonGoc.Name = "txtNguonGoc";
             this.txtNguonGoc.Size = new System.Drawing.Size(139, 26);
             this.txtNguonGoc.TabIndex = 65;
             // 
-            // txtGioiTinhThu
-            // 
-            this.txtGioiTinhThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGioiTinhThu.Location = new System.Drawing.Point(1335, 43);
-            this.txtGioiTinhThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtGioiTinhThu.Name = "txtGioiTinhThu";
-            this.txtGioiTinhThu.Size = new System.Drawing.Size(139, 26);
-            this.txtGioiTinhThu.TabIndex = 63;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(1198, 144);
+            this.label20.Location = new System.Drawing.Point(899, 149);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(86, 18);
             this.label20.TabIndex = 62;
@@ -1392,7 +1402,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(1198, 90);
+            this.label21.Location = new System.Drawing.Point(899, 95);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(78, 18);
             this.label21.TabIndex = 61;
@@ -1402,7 +1412,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(1198, 43);
+            this.label22.Location = new System.Drawing.Point(899, 48);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(71, 18);
             this.label22.TabIndex = 60;
@@ -1411,7 +1421,7 @@
             // txtKieuSinh
             // 
             this.txtKieuSinh.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKieuSinh.Location = new System.Drawing.Point(991, 141);
+            this.txtKieuSinh.Location = new System.Drawing.Point(717, 148);
             this.txtKieuSinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtKieuSinh.Name = "txtKieuSinh";
             this.txtKieuSinh.Size = new System.Drawing.Size(139, 26);
@@ -1420,7 +1430,7 @@
             // txtTenTV
             // 
             this.txtTenTV.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenTV.Location = new System.Drawing.Point(991, 94);
+            this.txtTenTV.Location = new System.Drawing.Point(717, 94);
             this.txtTenTV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenTV.Name = "txtTenTV";
             this.txtTenTV.Size = new System.Drawing.Size(139, 26);
@@ -1429,7 +1439,7 @@
             // txtTenTA
             // 
             this.txtTenTA.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenTA.Location = new System.Drawing.Point(991, 43);
+            this.txtTenTA.Location = new System.Drawing.Point(717, 43);
             this.txtTenTA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenTA.Name = "txtTenTA";
             this.txtTenTA.Size = new System.Drawing.Size(139, 26);
@@ -1439,7 +1449,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(847, 149);
+            this.label17.Location = new System.Drawing.Point(622, 144);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(76, 18);
             this.label17.TabIndex = 56;
@@ -1449,7 +1459,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(847, 102);
+            this.label18.Location = new System.Drawing.Point(622, 97);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(58, 18);
             this.label18.TabIndex = 55;
@@ -1459,7 +1469,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(847, 51);
+            this.label19.Location = new System.Drawing.Point(622, 46);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(58, 18);
             this.label19.TabIndex = 54;
@@ -1468,34 +1478,16 @@
             // txtTenKHThu
             // 
             this.txtTenKHThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenKHThu.Location = new System.Drawing.Point(613, 141);
+            this.txtTenKHThu.Location = new System.Drawing.Point(430, 148);
             this.txtTenKHThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenKHThu.Name = "txtTenKHThu";
             this.txtTenKHThu.Size = new System.Drawing.Size(139, 26);
             this.txtTenKHThu.TabIndex = 48;
             // 
-            // txtSachDoThu
-            // 
-            this.txtSachDoThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSachDoThu.Location = new System.Drawing.Point(613, 94);
-            this.txtSachDoThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSachDoThu.Name = "txtSachDoThu";
-            this.txtSachDoThu.Size = new System.Drawing.Size(139, 26);
-            this.txtSachDoThu.TabIndex = 47;
-            // 
-            // txtSoLuong
-            // 
-            this.txtSoLuong.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuong.Location = new System.Drawing.Point(613, 43);
-            this.txtSoLuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(139, 26);
-            this.txtSoLuong.TabIndex = 46;
-            // 
             // txtTenThu
             // 
             this.txtTenThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenThu.Location = new System.Drawing.Point(210, 94);
+            this.txtTenThu.Location = new System.Drawing.Point(133, 92);
             this.txtTenThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenThu.Name = "txtTenThu";
             this.txtTenThu.Size = new System.Drawing.Size(139, 26);
@@ -1504,17 +1496,17 @@
             // txtMaThu
             // 
             this.txtMaThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaThu.Location = new System.Drawing.Point(210, 43);
+            this.txtMaThu.Location = new System.Drawing.Point(133, 43);
             this.txtMaThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMaThu.Name = "txtMaThu";
             this.txtMaThu.Size = new System.Drawing.Size(139, 26);
-            this.txtMaThu.TabIndex = 43;
+            this.txtMaThu.TabIndex = 0;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(65, 46);
+            this.label10.Location = new System.Drawing.Point(29, 48);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 18);
             this.label10.TabIndex = 42;
@@ -1524,7 +1516,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(428, 141);
+            this.label11.Location = new System.Drawing.Point(330, 141);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 18);
             this.label11.TabIndex = 41;
@@ -1534,7 +1526,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(428, 97);
+            this.label12.Location = new System.Drawing.Point(330, 97);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 18);
             this.label12.TabIndex = 40;
@@ -1544,7 +1536,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(428, 51);
+            this.label13.Location = new System.Drawing.Point(330, 46);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 18);
             this.label13.TabIndex = 39;
@@ -1554,7 +1546,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(66, 141);
+            this.label14.Location = new System.Drawing.Point(29, 146);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 18);
             this.label14.TabIndex = 38;
@@ -1564,7 +1556,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(65, 95);
+            this.label15.Location = new System.Drawing.Point(28, 98);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(63, 18);
             this.label15.TabIndex = 37;
@@ -1584,10 +1576,10 @@
             // pbThu
             // 
             this.pbThu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbThu.Location = new System.Drawing.Point(1547, 18);
+            this.pbThu.Location = new System.Drawing.Point(1640, 18);
             this.pbThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbThu.Name = "pbThu";
-            this.pbThu.Size = new System.Drawing.Size(321, 248);
+            this.pbThu.Size = new System.Drawing.Size(228, 217);
             this.pbThu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbThu.TabIndex = 35;
             this.pbThu.TabStop = false;
@@ -2417,6 +2409,31 @@
             this.label46.TabIndex = 9;
             this.label46.Text = "SĐT: ...";
             // 
+            // tpTheoLoai
+            // 
+            this.tpTheoLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tpTheoLoai.Controls.Add(this.crystalReportViewer1);
+            this.tpTheoLoai.Location = new System.Drawing.Point(4, 25);
+            this.tpTheoLoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tpTheoLoai.Name = "tpTheoLoai";
+            this.tpTheoLoai.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tpTheoLoai.Size = new System.Drawing.Size(1902, 748);
+            this.tpTheoLoai.TabIndex = 7;
+            this.tpTheoLoai.Text = "Theo Loài";
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 4);
+            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1896, 740);
+            this.crystalReportViewer1.TabIndex = 1;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
             // tpSachDo
             // 
             this.tpSachDo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -2677,30 +2694,161 @@
             this.label65.TabIndex = 3;
             this.label65.Text = "Chi phí một ngày theo mã thú";
             // 
-            // crystalReportViewer1
+            // label60
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 4);
-            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1896, 740);
-            this.crystalReportViewer1.TabIndex = 1;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(1197, 43);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(79, 18);
+            this.label60.TabIndex = 85;
+            this.label60.Text = "Lý do vào";
             // 
-            // tpTheoLoai
+            // label67
             // 
-            this.tpTheoLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tpTheoLoai.Controls.Add(this.crystalReportViewer1);
-            this.tpTheoLoai.Location = new System.Drawing.Point(4, 25);
-            this.tpTheoLoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpTheoLoai.Name = "tpTheoLoai";
-            this.tpTheoLoai.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpTheoLoai.Size = new System.Drawing.Size(1902, 748);
-            this.tpTheoLoai.TabIndex = 7;
-            this.tpTheoLoai.Text = "Theo Loài";
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.Location = new System.Drawing.Point(1197, 99);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(105, 18);
+            this.label67.TabIndex = 86;
+            this.label67.Text = "Thức ăn sáng";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.Location = new System.Drawing.Point(1197, 151);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(102, 18);
+            this.label68.TabIndex = 87;
+            this.label68.Text = "Thức ăn trưa";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Location = new System.Drawing.Point(1200, 199);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(90, 18);
+            this.label69.TabIndex = 88;
+            this.label69.Text = "Thức ăn tối";
+            // 
+            // txtLyDoVao
+            // 
+            this.txtLyDoVao.Location = new System.Drawing.Point(1313, 43);
+            this.txtLyDoVao.Multiline = true;
+            this.txtLyDoVao.Name = "txtLyDoVao";
+            this.txtLyDoVao.Size = new System.Drawing.Size(302, 26);
+            this.txtLyDoVao.TabIndex = 89;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(1475, 100);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(27, 18);
+            this.label70.TabIndex = 96;
+            this.label70.Text = "SL";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(1475, 149);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(27, 18);
+            this.label71.TabIndex = 97;
+            this.label71.Text = "SL";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(1475, 199);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(27, 18);
+            this.label72.TabIndex = 98;
+            this.label72.Text = "SL";
+            // 
+            // cbbThucAnSang
+            // 
+            this.cbbThucAnSang.FormattingEnabled = true;
+            this.cbbThucAnSang.Location = new System.Drawing.Point(1313, 99);
+            this.cbbThucAnSang.Name = "cbbThucAnSang";
+            this.cbbThucAnSang.Size = new System.Drawing.Size(121, 24);
+            this.cbbThucAnSang.TabIndex = 99;
+            // 
+            // cbbThucAnTrua
+            // 
+            this.cbbThucAnTrua.FormattingEnabled = true;
+            this.cbbThucAnTrua.Location = new System.Drawing.Point(1313, 148);
+            this.cbbThucAnTrua.Name = "cbbThucAnTrua";
+            this.cbbThucAnTrua.Size = new System.Drawing.Size(121, 24);
+            this.cbbThucAnTrua.TabIndex = 100;
+            // 
+            // cbbThucAntoi
+            // 
+            this.cbbThucAntoi.FormattingEnabled = true;
+            this.cbbThucAntoi.Location = new System.Drawing.Point(1313, 196);
+            this.cbbThucAntoi.Name = "cbbThucAntoi";
+            this.cbbThucAntoi.Size = new System.Drawing.Size(121, 24);
+            this.cbbThucAntoi.TabIndex = 101;
+            // 
+            // cbbSLThucAnSang
+            // 
+            this.cbbSLThucAnSang.FormattingEnabled = true;
+            this.cbbSLThucAnSang.Location = new System.Drawing.Point(1524, 100);
+            this.cbbSLThucAnSang.Name = "cbbSLThucAnSang";
+            this.cbbSLThucAnSang.Size = new System.Drawing.Size(91, 24);
+            this.cbbSLThucAnSang.TabIndex = 102;
+            // 
+            // cbbSLThucAnTrua
+            // 
+            this.cbbSLThucAnTrua.FormattingEnabled = true;
+            this.cbbSLThucAnTrua.Location = new System.Drawing.Point(1524, 150);
+            this.cbbSLThucAnTrua.Name = "cbbSLThucAnTrua";
+            this.cbbSLThucAnTrua.Size = new System.Drawing.Size(91, 24);
+            this.cbbSLThucAnTrua.TabIndex = 103;
+            // 
+            // cbbSLThucAnToi
+            // 
+            this.cbbSLThucAnToi.FormattingEnabled = true;
+            this.cbbSLThucAnToi.Location = new System.Drawing.Point(1524, 198);
+            this.cbbSLThucAnToi.Name = "cbbSLThucAnToi";
+            this.cbbSLThucAnToi.Size = new System.Drawing.Size(91, 24);
+            this.cbbSLThucAnToi.TabIndex = 104;
+            // 
+            // cbbSoLuongThu
+            // 
+            this.cbbSoLuongThu.FormattingEnabled = true;
+            this.cbbSoLuongThu.Location = new System.Drawing.Point(430, 43);
+            this.cbbSoLuongThu.Name = "cbbSoLuongThu";
+            this.cbbSoLuongThu.Size = new System.Drawing.Size(136, 24);
+            this.cbbSoLuongThu.TabIndex = 105;
+            // 
+            // cbbSachDoThu
+            // 
+            this.cbbSachDoThu.FormattingEnabled = true;
+            this.cbbSachDoThu.Location = new System.Drawing.Point(430, 94);
+            this.cbbSachDoThu.Name = "cbbSachDoThu";
+            this.cbbSachDoThu.Size = new System.Drawing.Size(136, 24);
+            this.cbbSachDoThu.TabIndex = 106;
+            // 
+            // cbbGioiTinhThu
+            // 
+            this.cbbGioiTinhThu.FormattingEnabled = true;
+            this.cbbGioiTinhThu.Location = new System.Drawing.Point(1017, 40);
+            this.cbbGioiTinhThu.Name = "cbbGioiTinhThu";
+            this.cbbGioiTinhThu.Size = new System.Drawing.Size(139, 24);
+            this.cbbGioiTinhThu.TabIndex = 107;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 32);
             // 
             // fMain
             // 
@@ -2755,6 +2903,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tpTheoLoai.ResumeLayout(false);
             this.tpSachDo.ResumeLayout(false);
             this.tpSachDo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSThuTrongSachDo)).EndInit();
@@ -2770,7 +2919,6 @@
             this.tpMaThu.ResumeLayout(false);
             this.tpMaThu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiPhiMaThu)).EndInit();
-            this.tpTheoLoai.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2892,7 +3040,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtNguonGoc;
-        private System.Windows.Forms.TextBox txtGioiTinhThu;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
@@ -2903,8 +3050,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtTenKHThu;
-        private System.Windows.Forms.TextBox txtSachDoThu;
-        private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.TextBox txtTenThu;
         private System.Windows.Forms.TextBox txtMaThu;
         private System.Windows.Forms.Label label10;
@@ -2920,7 +3065,6 @@
         private System.Windows.Forms.ComboBox cboTimKiemChuong;
         private System.Windows.Forms.TabPage tpThongTinHeThong;
         private System.Windows.Forms.ImageList imgL1;
-        private System.Windows.Forms.Button btnHuyThu;
         private System.Windows.Forms.Button btnLuuThu;
         private System.Windows.Forms.Button btnXoaThu;
         private System.Windows.Forms.Button btnSuaThu;
@@ -2987,5 +3131,24 @@
         private System.Windows.Forms.ComboBox cbbMaLoai;
         private System.Windows.Forms.TabPage tpTheoLoai;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.ComboBox cbbSLThucAnToi;
+        private System.Windows.Forms.ComboBox cbbSLThucAnTrua;
+        private System.Windows.Forms.ComboBox cbbSLThucAnSang;
+        private System.Windows.Forms.ComboBox cbbThucAntoi;
+        private System.Windows.Forms.ComboBox cbbThucAnTrua;
+        private System.Windows.Forms.ComboBox cbbThucAnSang;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox txtLyDoVao;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.ComboBox cbbGioiTinhThu;
+        private System.Windows.Forms.ComboBox cbbSachDoThu;
+        private System.Windows.Forms.ComboBox cbbSoLuongThu;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
