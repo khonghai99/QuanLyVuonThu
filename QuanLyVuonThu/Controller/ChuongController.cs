@@ -15,7 +15,7 @@ namespace QuanLyVuonThu.Controller
         public List<ModelChuong> chuongs ()
         {
             List<ModelChuong> chuongs = new List<ModelChuong>();
-            SqlDataReader reader = dtBase.command("select * from chuong").ExecuteReader();
+            SqlDataReader reader = dtBase.command("select * from chuong  order by machuong ASC").ExecuteReader();
             if (reader.HasRows)
             {
                 // Đọc kết quả

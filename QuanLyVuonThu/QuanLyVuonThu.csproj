@@ -89,10 +89,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ChuongController.cs" />
+    <Compile Include="Model\modelNhanVien.cs" />
+    <Compile Include="Controller\nhanVienController.cs" />
     <Compile Include="Controller\ThucAnController.cs" />
+    <Compile Include="Controller\TrangThaiController.cs" />
     <Compile Include="Model\ModelChuong.cs" />
     <Compile Include="Model\ModelThucAn.cs" />
     <Compile Include="Model\ModelThucAnThu.cs" />
+    <Compile Include="Model\ModelTrangThai.cs" />
     <Compile Include="rpTheoLoai.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
