@@ -25,6 +25,7 @@ namespace QuanLyVuonThu
         ThucAnController ThucAnController = new ThucAnController();
         nhanVienController nhanVienController = new nhanVienController();
         TrangThaiController TrangThaiController = new TrangThaiController();
+        thuController thuController = new thuController();
         string maNhanvien = "";
         string maThu = "";
         string maThucAn = "";
@@ -38,7 +39,7 @@ namespace QuanLyVuonThu
         List<ModelThucAn> modelThucAns = new List<ModelThucAn>();  // danh sach cac loai thuc an
         List<modelNhanVien> nhanViens = new List<modelNhanVien>();
         List<string> dsLoai = new List<string>();  // danh sach loai thu
-       // danh sach chuong thu
+                                                   // danh sach chuong thu
         List<ModelThu> modelThus = new List<ModelThu>();  // danh sach thu
         OpenFileDialog openFileDialog = new OpenFileDialog(); // mo file
         OpenFileDialog fileDialog = new OpenFileDialog();
@@ -47,6 +48,7 @@ namespace QuanLyVuonThu
             Regex regex = new Regex(@"^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$");
             return regex.IsMatch(str);
         }
+
         ProcessDataBase dtBase = new ProcessDataBase();
         public void ResetValue() // reset button, cbb, rdb, dtp
         {
@@ -79,10 +81,7 @@ namespace QuanLyVuonThu
         {
             InitializeComponent();
         }
-
-
-        // load du lieu cho form
-        private void FMain_Load(object sender, EventArgs e)
+        private void load()
         {
             cbbSLThucAnSang.Items.Clear();
             cbbSLThucAnTrua.Items.Clear();
@@ -97,9 +96,9 @@ namespace QuanLyVuonThu
             tclDS.ItemSize = new Size(0, 1);
             tclDS.SizeMode = TabSizeMode.Fixed;
             //Gọi pt DocBang lấy dữ liệu của bảng tblChatLieu đổ vào DataTable
-            DataTable dtChatLieu = dtBase.DocDL("select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
+            DataTable dtTableThu = dtBase.DocDL("select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
                 "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu order by maloai ASC");
-            dtgvThu.DataSource = dtChatLieu;
+            dtgvThu.DataSource = dtTableThu;
             dtgvThu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //Định dạng dataGrid
             dtgvThu.Columns[0].HeaderText = "Mã thú";
@@ -127,7 +126,7 @@ namespace QuanLyVuonThu
             dtgvThu.Columns[21].HeaderText = "Số lượng";
 
             dtgvThu.BackgroundColor = Color.LightBlue;
-            dtChatLieu.Dispose();
+            dtTableThu.Dispose();
             for (int i = 0; i < dtgvThu.Rows.Count - 1; i++)
             {
                 modelThus.Add(new ModelThu(dtgvThu.Rows[i].Cells[0].Value.ToString(), dtgvThu.Rows[i].Cells[1].Value.ToString(), dtgvThu.Rows[i].Cells[2].Value.ToString(), dtgvThu.Rows[i].Cells[3].Value.ToString(), Convert.ToInt32(dtgvThu.Rows[i].Cells[4].Value.ToString()), dtgvThu.Rows[i].Cells[5].Value.ToString(), dtgvThu.Rows[i].Cells[6].Value.ToString(), dtgvThu.Rows[i].Cells[7].Value.ToString(), dtgvThu.Rows[i].Cells[8].Value.ToString(), dtgvThu.Rows[i].Cells[9].Value.ToString(), dtgvThu.Rows[i].Cells[10].Value.ToString(), Convert.ToDateTime(dtgvThu.Rows[i].Cells[11].Value.ToString()), dtgvThu.Rows[i].Cells[12].Value.ToString(), dtgvThu.Rows[i].Cells[13].Value.ToString(), Convert.ToDateTime(dtgvThu.Rows[i].Cells[14].Value.ToString()), Convert.ToInt32(dtgvThu.Rows[i].Cells[15].Value.ToString()), dtgvThu.Rows[i].Cells[16].Value.ToString()));
@@ -189,14 +188,14 @@ namespace QuanLyVuonThu
                 }
             }
             nhanViens = nhanVienController.listNV();
-            for(int i = 0;i < nhanViens.Count;i++)
+            for (int i = 0; i < nhanViens.Count; i++)
             {
                 cbbNhanVien.Items.Add(nhanViens[i].TenNhanVien);
             }
             trangThais = TrangThaiController.listTrangThai();
-            for(int i = 0;i<trangThais.Count;i++)
+            for (int i = 0; i < trangThais.Count; i++)
             {
-                cbbMaTT.Items.Add(TrangThaiController.getTenTrangThai( trangThais[i].MaTrangThai));
+                cbbMaTT.Items.Add(TrangThaiController.getTenTrangThai(trangThais[i].MaTrangThai));
             }
             List<ModelChuong> chuongs = new List<ModelChuong>();
             chuongs = ChuongController.chuongs();
@@ -235,6 +234,12 @@ namespace QuanLyVuonThu
             dtgvNhanVien.Columns[4].HeaderText = "ngày sinh";
             dtgvNhanVien.Columns[5].HeaderText = "số điện thoại";
             dtgvNhanVien.Columns[6].HeaderText = "ảnh";
+        }
+
+        // load du lieu cho form
+        private void FMain_Load(object sender, EventArgs e)
+        {
+            load();
         }
 
         private void BbtnDangXuat_ItemClick(object sender, ItemClickEventArgs e)
@@ -294,9 +299,9 @@ namespace QuanLyVuonThu
         private string getMaThucAn(string tenthucan)
         {
             string maTA = "";
-            for(int i = 0; i<modelThucAns.Count;i++)
+            for (int i = 0; i < modelThucAns.Count; i++)
             {
-                if(tenthucan.Equals(modelThucAns[i].TenThucAn))
+                if (tenthucan.Equals(modelThucAns[i].TenThucAn))
                 {
                     maTA = modelThucAns[i].MaThucAn;
                 }
@@ -517,7 +522,7 @@ namespace QuanLyVuonThu
                         // Đọc kết quả
                         while (reader.Read())
                         {
-                            if(txtMaThu.Text.Equals(reader[0].ToString()))
+                            if (txtMaThu.Text.Equals(reader[0].ToString()))
                             {
                                 MessageBox.Show("mã thú trùng với mã thú đã có");
                                 break;
@@ -583,7 +588,7 @@ namespace QuanLyVuonThu
             if (check() == false) return;
             else
             {
-                if(openFileDialog.FileName.Length != 0)
+                if (openFileDialog.FileName.Length != 0)
                 {
                     dtBase.CapNhatDuLieu("insert into Thu values(N'" +
                 txtMaThu.Text + "',N'" + txtTenThu.Text + "',N'" + cbbMaLoai.Text + "','" + Convert.ToInt32(cbbSoLuongThu.Text)
@@ -606,9 +611,9 @@ namespace QuanLyVuonThu
                 }
 
                 dtBase.CapNhatDuLieu("insert into Thu_chuong values(N'" + cbbMaChuong.Text + "',N'" + txtMaThu.Text + "','" + Convert.ToDateTime(dtpNgayVaoThu.Text) + "',N'" + txtLyDoVao.Text + "')");
-                dtBase.CapNhatDuLieu("insert into Thu_thucan values(N'" + txtMaThu.Text + "',N'" 
-                    + getMaThucAn(cbbThucAnSang.Text) + "',N'" + Convert.ToInt32(cbbSLThucAnSang.Text) + "',N'" 
-                    + getMaThucAn(cbbThucAnTrua.Text) + "','" + Convert.ToInt32(cbbSLThucAnTrua.Text) + "',N'" 
+                dtBase.CapNhatDuLieu("insert into Thu_thucan values(N'" + txtMaThu.Text + "',N'"
+                    + getMaThucAn(cbbThucAnSang.Text) + "',N'" + Convert.ToInt32(cbbSLThucAnSang.Text) + "',N'"
+                    + getMaThucAn(cbbThucAnTrua.Text) + "','" + Convert.ToInt32(cbbSLThucAnTrua.Text) + "',N'"
                     + getMaThucAn(cbbThucAntoi.Text) + "','" + Convert.ToInt32(cbbSLThucAnToi.Text) + "')");
 
                 SqlDataReader reader = dtBase.command("select soluongthu from chuong where machuong != '" + txtMaChuong.Text + "' ").ExecuteReader();
@@ -620,9 +625,9 @@ namespace QuanLyVuonThu
                         soLuongThu = Convert.ToInt32(reader[0].ToString());
                     }
                 }
-                if(soLuongThu !=0 )
+                if (soLuongThu != 0)
                 {
-                    soLuongThu = soLuongThu  + Convert.ToInt32(cbbSoLuongThu.Text);
+                    soLuongThu = soLuongThu + Convert.ToInt32(cbbSoLuongThu.Text);
                     dtBase.CapNhatDuLieu("update chuong set soluongthu ='" + soLuongThu + "' where machuong ='" + txtMaChuong.Text + "' ");
                 }
                 MessageBox.Show("Bạn đã thêm mới thành công");
@@ -631,7 +636,7 @@ namespace QuanLyVuonThu
                 pbThu.Image = null;
                 ResetValue();
             }
-
+            load();
         }
 
         private void BtnLuuThu_Click(object sender, EventArgs e)
@@ -668,10 +673,10 @@ namespace QuanLyVuonThu
             cbbSLThucAnToi.Text = dtgvThu.CurrentRow.Cells[21].Value.ToString();
             if (dtgvThu.CurrentRow.Cells[22].Value.ToString().Length == 0)
             {
-                pbThu.Image = null;              
+                pbThu.Image = null;
             }
             else pbThu.Image = Base64ToImage(dtgvThu.CurrentRow.Cells[22].Value.ToString());
-            SqlDataReader reader = dtBase.command("select lydovao from thu_chuong where machuong = '"+ dtgvThu.CurrentRow.Cells[3].Value.ToString() + "' and mathu = '" + dtgvThu.CurrentRow.Cells[0].Value.ToString() + "'").ExecuteReader();
+            SqlDataReader reader = dtBase.command("select lydovao from thu_chuong where machuong = '" + dtgvThu.CurrentRow.Cells[3].Value.ToString() + "' and mathu = '" + dtgvThu.CurrentRow.Cells[0].Value.ToString() + "'").ExecuteReader();
             if (reader.HasRows)
             {
                 // Đọc kết quả
@@ -718,7 +723,13 @@ namespace QuanLyVuonThu
 
         private void BtnTimKiemThu_Click(object sender, EventArgs e)
         {
+            // dtBase là class kết nối database khai báo trên đầu
+            string sql = " select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
+                "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu and (thu.mathu  like '%" + txtTimKiemThu.Text + "%' or thu.tenthu like '%" + txtTimKiemThu.Text + "%' )";
 
+            Golobal.GolobalThu.kquaTimKiem = dtBase.DocDL(sql);
+            frmTKiemThu frmTKiemThu = new frmTKiemThu();
+            frmTKiemThu.ShowDialog();
 
         }
 
@@ -782,6 +793,7 @@ namespace QuanLyVuonThu
                 ResetValue();
                 btnSuaThu.Enabled = false;
             }
+            load();
         }
 
         private void BtnXoaThu_Click(object sender, EventArgs e)
@@ -805,7 +817,7 @@ namespace QuanLyVuonThu
                     }
                     if (soLuongThu != 0)
                     {
-                        soLuongThu = soLuongThu - soLuongThuPrevious ;
+                        soLuongThu = soLuongThu - soLuongThuPrevious;
                         dtBase.CapNhatDuLieu("update chuong set soluongthu ='" + soLuongThu + "' where machuong ='" + txtMaChuong.Text + "' ");
                     }
                     MessageBox.Show("Bạn đã xóa thành công");
@@ -813,8 +825,9 @@ namespace QuanLyVuonThu
                 "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu order by maloai ASC");
                     ResetValue();
                 }
-                
+
             }
+            load();
         }
 
         private void CbbMaLoai_SelectedIndexChanged(object sender, EventArgs e)
@@ -826,7 +839,7 @@ namespace QuanLyVuonThu
                 // Đọc kết quả
                 while (reader.Read())
                 {
-                   
+
                     cbbMaChuong.Items.Add(reader[0].ToString());
                 }
             }
@@ -842,8 +855,8 @@ namespace QuanLyVuonThu
             txtDienTichChuong.Text = dtgvChuong.CurrentRow.Cells[3].Value.ToString();
             txtChieuCaoChuong.Text = dtgvChuong.CurrentRow.Cells[4].Value.ToString();
             txtSoLuongThuChuong.Text = dtgvChuong.CurrentRow.Cells[5].Value.ToString();
-            cbbMaTT.Text =TrangThaiController.getTenTrangThai( dtgvChuong.CurrentRow.Cells[6].Value.ToString());
-            cbbNhanVien.Text =nhanVienController.getTenNhanVien( dtgvChuong.CurrentRow.Cells[7].Value.ToString());
+            cbbMaTT.Text = TrangThaiController.getTenTrangThai(dtgvChuong.CurrentRow.Cells[6].Value.ToString());
+            cbbNhanVien.Text = nhanVienController.getTenNhanVien(dtgvChuong.CurrentRow.Cells[7].Value.ToString());
             txtGhiChu.Text = dtgvChuong.CurrentRow.Cells[8].Value.ToString();
         }
 
@@ -866,19 +879,19 @@ namespace QuanLyVuonThu
 
         private void BtnThemThucAn_Click(object sender, EventArgs e)
         {
-            if(txtMaThucAn.Text.Length ==0 )
+            if (txtMaThucAn.Text.Length == 0)
             {
                 MessageBox.Show("bạn chưa nhập mã thức ăn");
             }
-            else if(txtTenThucAn.Text.Length == 0)
+            else if (txtTenThucAn.Text.Length == 0)
             {
                 MessageBox.Show("bạn chưa nhập tên thức ăn");
             }
-            else if(txtCongDung.Text.Length == 0)
+            else if (txtCongDung.Text.Length == 0)
             {
                 MessageBox.Show("bạn chưa nhập công dụng mã thức ăn");
             }
-            else if(txtMaDonViThucAn.Text.Length == 0)
+            else if (txtMaDonViThucAn.Text.Length == 0)
             {
                 MessageBox.Show("bạn chưa nhập đơn vị cung cấp thức ăn");
             }
@@ -912,20 +925,21 @@ namespace QuanLyVuonThu
                     MessageBox.Show("bạn đã thêm thành công");
                     dtgvThucAn.DataSource = dtBase.DocDL("select *  from thucan");
                 }
+                load();
             }
-           
-                
+
+
         }
 
         private void BtnXoaThucAn_Click(object sender, EventArgs e)
         {
-            if(txtMaThucAn.Text.Length == 0)
+            if (txtMaThucAn.Text.Length == 0)
             {
                 MessageBox.Show("bạn chưa nhập mã thức ăn");
             }
             else
             {
-                string sql = " delete from thucan where mathucan = '"+txtMaThucAn.Text+"'";
+                string sql = " delete from thucan where mathucan = '" + txtMaThucAn.Text + "'";
                 dtBase.CapNhatDuLieu(sql);
                 MessageBox.Show("bạn đã xóa thành công");
                 dtgvThucAn.DataSource = dtBase.DocDL("select * from  thucan");
@@ -963,7 +977,7 @@ namespace QuanLyVuonThu
                         listMaThucAn.Add(reader[0].ToString());
                     }
                 }
-                for(int i = 0;i< listMaThucAn.Count;i++)
+                for (int i = 0; i < listMaThucAn.Count; i++)
                 {
                     if (txtMaThucAn.Text.Equals(listMaThucAn[i]))
                     {
@@ -973,9 +987,9 @@ namespace QuanLyVuonThu
                     else check = 1;
                 }
                 if (check == 0) MessageBox.Show("mã thức ăn đã tồn tại");
-                else if(check == 1)
+                else if (check == 1)
                 {
-                    string sql = " update thucan set mathucan = '"+ txtMaThucAn.Text+ "',tenthucan = N'" + txtTenThucAn.Text + "',congdung = N'" + txtCongDung.Text + "',madonvi = N'" + txtMaDonViThucAn.Text + "'  where mathucan = '" + maThucAn+"'";
+                    string sql = " update thucan set mathucan = '" + txtMaThucAn.Text + "',tenthucan = N'" + txtTenThucAn.Text + "',congdung = N'" + txtCongDung.Text + "',madonvi = N'" + txtMaDonViThucAn.Text + "'  where mathucan = '" + maThucAn + "'";
                     ThucAnController.themThucAn(sql);
                     reader = dtBase.command("select mathucansang,mathucantrua,mathucantoi from thu_thucan").ExecuteReader();
                     if (reader.HasRows)
@@ -983,12 +997,12 @@ namespace QuanLyVuonThu
                         // Đọc kết quả
                         while (reader.Read())
                         {
-                            if(reader[0].ToString().Equals(maThucAn))
+                            if (reader[0].ToString().Equals(maThucAn))
                             {
                                 string sqlupdate = " update thu_thucan set mathucansang = '" + txtMaThucAn.Text + "'  where mathucansang = '" + maThucAn + "'";
                                 ThucAnController.themThucAn(sqlupdate);
                             }
-                             if (reader[1].ToString().Equals(maThucAn))
+                            if (reader[1].ToString().Equals(maThucAn))
                             {
                                 string sqlupdate = " update thu_thucan set mathucantrua = '" + txtMaThucAn.Text + "'  where mathucantrua = '" + maThucAn + "'";
                                 ThucAnController.themThucAn(sqlupdate);
@@ -999,6 +1013,7 @@ namespace QuanLyVuonThu
                                 dtBase.CapNhatDuLieu(sqlupdate);
                             }
                             listMaThucAn.Add(reader[0].ToString());
+                            load();
                         }
                     }
                     MessageBox.Show("bạn đã sửa thành công");
@@ -1064,22 +1079,23 @@ namespace QuanLyVuonThu
                     else check = 1;
                 }
                 if (check == 0) MessageBox.Show("mã chuồng đã có");
-                else if(check == 1)
+                else if (check == 1)
                 {
                     string sql = " insert into chuong values(N'" + txtMaChuong.Text + "',N'" + cbbTenLoai.Text + "',N'" + txtMaKhuChuong.Text + "','" + Convert.ToDouble(txtDienTichChuong.Text)
                         + "','" + Convert.ToDouble(txtChieuCaoChuong.Text) + "',N'" + txtSoLuongThuChuong.Text
-                        + "',N'" +TrangThaiController.getMaTrangThai( cbbMaTT.Text) + "',N'" +nhanVienController.getMaNhanVien( cbbNhanVien.Text)
+                        + "',N'" + TrangThaiController.getMaTrangThai(cbbMaTT.Text) + "',N'" + nhanVienController.getMaNhanVien(cbbNhanVien.Text)
                         + "',N'" + txtGhiChu.Text + "' )";
                     dtBase.CapNhatDuLieu(sql);
                     MessageBox.Show("bạn đã thêm thành công");
                     dtgvChuong.DataSource = dtBase.DocDL("select *  from chuong");
                 }
             }
+            load();
         }
 
         private void BtnXoaChuong_Click(object sender, EventArgs e)
         {
-            if(txtMaChuong.Text.Length == 0)
+            if (txtMaChuong.Text.Length == 0)
             {
                 MessageBox.Show("bạn chưa nhập mã chuồng");
             }
@@ -1106,14 +1122,15 @@ namespace QuanLyVuonThu
                     else check = 1;
                 }
                 if (check == 0) MessageBox.Show("Chuồng đang có thú không thể xóa");
-                else if(check == 1)
+                else if (check == 1)
                 {
-                    string sql = " delete from chuong where machuong = '"+txtMaChuong.Text+"'";
+                    string sql = " delete from chuong where machuong = '" + txtMaChuong.Text + "'";
                     dtBase.CapNhatDuLieu(sql);
                     MessageBox.Show("bạn đã xóa thành công");
                     dtgvChuong.DataSource = dtBase.DocDL("select * from chuong");
                 }
             }
+            load();
         }
 
         private void BtnSuaChuong_Click(object sender, EventArgs e)
@@ -1154,7 +1171,7 @@ namespace QuanLyVuonThu
             {
                 listMaChuong.Clear();
                 int check = 0;
-                SqlDataReader reader = dtBase.command("select machuong from chuong where machuong !='"+txtMaChuong.Text+"' ").ExecuteReader();
+                SqlDataReader reader = dtBase.command("select machuong from chuong where machuong !='" + txtMaChuong.Text + "' ").ExecuteReader();
                 if (reader.HasRows)
                 {
                     // Đọc kết quả
@@ -1175,24 +1192,25 @@ namespace QuanLyVuonThu
                 if (check == 0) MessageBox.Show("mã chuồng đã có");
                 else if (check == 1)
                 {
-                    string sql = " update chuong set machuong =N '" + txtMaChuong.Text + "',maloai = N'" 
-                        + cbbTenLoai.Text + "',makhu = N'" + txtMaKhuChuong.Text + "',dientich = '" +Convert.ToDouble( txtDienTichChuong.Text )
-                        + "',chieucao = '" +Convert.ToDouble( txtChieuCaoChuong.Text )+ "',soluongthu = '" + txtSoLuongThuChuong.Text 
-                        + "',matrangthai = '" +TrangThaiController.getMaTrangThai( cbbMaTT.Text) + "',nhanvientrongcoi = '" +nhanVienController.getMaNhanVien( cbbNhanVien.Text )
+                    string sql = " update chuong set machuong =N'" + txtMaChuong.Text + "',maloai = N'" + cbbTenLoai.Text + "'"
+                        + ",makhu = N'" + txtMaKhuChuong.Text + "',dientich = '" + Convert.ToDouble(txtDienTichChuong.Text)
+                        + "',chieucao = '" + Convert.ToDouble(txtChieuCaoChuong.Text) + "',soluongthu = '" + txtSoLuongThuChuong.Text
+                        + "',matrangthai = '" + TrangThaiController.getMaTrangThai(cbbMaTT.Text) + "',nhanvientrongcoi = '" + nhanVienController.getMaNhanVien(cbbNhanVien.Text)
                         + "',ghichu = N'" + txtGhiChu.Text + "' where machuong = '" + maChuong + "'";
-                   dtBase.CapNhatDuLieu(sql);
-                    string sql1 = "update thu_chuong set machuong =N '" + txtMaChuong.Text + "' where machuong = '" + maChuong + "'";
+                    dtBase.CapNhatDuLieu(sql);
+                    string sql1 = "update thu_chuong set machuong = N'" + txtMaChuong.Text + "' where machuong = '" + maChuong + "'";
                     dtBase.CapNhatDuLieu(sql1);
                     MessageBox.Show("bạn đã sửa thành công");
                     dtgvChuong.DataSource = dtBase.DocDL("select *  from chuong");
                 }
             }
+            load();
         }
 
         private void BtnThemNV_Click(object sender, EventArgs e)
         {
-            
-            if(txtMaNhanVien.Text.Length == 0)
+
+            if (txtMaNhanVien.Text.Length == 0)
             {
                 MessageBox.Show("b chưa nhập mã nhân viên");
                 txtMaNhanVien.Focus();
@@ -1271,7 +1289,7 @@ namespace QuanLyVuonThu
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 pbAnhNhanVien.Image = new Bitmap(fileDialog.FileName);
-                
+
             }
         }
 
@@ -1306,7 +1324,7 @@ namespace QuanLyVuonThu
             {
                 ListmaNhanVien.Clear();
                 int check = 0;
-                SqlDataReader reader = dtBase.command("select manhanvien from nhanvien where manhanvien != '"+maNhanvien+"' ").ExecuteReader();
+                SqlDataReader reader = dtBase.command("select manhanvien from nhanvien where manhanvien != '" + maNhanvien + "' ").ExecuteReader();
                 if (reader.HasRows)
                 {
                     // Đọc kết quả
@@ -1361,7 +1379,7 @@ namespace QuanLyVuonThu
 
         private void BtnXoaNV_Click(object sender, EventArgs e)
         {
-            if(txtMaNhanVien.Text.Length == 0)
+            if (txtMaNhanVien.Text.Length == 0)
             {
                 MessageBox.Show("b chưa nhập mã nhân viên");
                 txtMaNhanVien.Focus();
@@ -1379,7 +1397,7 @@ namespace QuanLyVuonThu
                         nhanvientrongcoi.Add(reader[0].ToString());
                     }
                 }
-                for(int i =0;i<nhanvientrongcoi.Count;i++)
+                for (int i = 0; i < nhanvientrongcoi.Count; i++)
                 {
                     if (txtMaNhanVien.Text.Equals(nhanvientrongcoi[i]))
                     {
@@ -1389,14 +1407,16 @@ namespace QuanLyVuonThu
                     else check = 1;
                 }
                 if (check == 0) MessageBox.Show("nhân viên đang trông coi, không thể xóa");
-                else if(check == 1)
+                else if (check == 1)
                 {
-                    string sql = " delete from nhanvien where manhanvien ='"+txtMaNhanVien.Text+"'";
+                    string sql = " delete from nhanvien where manhanvien ='" + txtMaNhanVien.Text + "'";
                     dtBase.CapNhatDuLieu(sql);
                     MessageBox.Show("b đã xóa thành công nhân viên");
                     dtgvNhanVien.DataSource = dtBase.DocDL("select manhanvien,tennhanvien,diachi,gioitinh,ngaysinh,sodienthoai,anhnhanvien from nhanvien");
                 }
             }
         }
+
+
     }
 }
