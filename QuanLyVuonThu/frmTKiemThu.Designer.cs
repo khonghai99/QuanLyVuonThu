@@ -738,6 +738,7 @@
             this.btnTimKiemThu.Text = "Tìm kiếm";
             this.btnTimKiemThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTimKiemThu.UseVisualStyleBackColor = true;
+            this.btnTimKiemThu.Click += new System.EventHandler(this.BtnTimKiemThu_Click);
             // 
             // splitter1
             // 

@@ -26,6 +26,7 @@ namespace QuanLyVuonThu
         nhanVienController nhanVienController = new nhanVienController();
         TrangThaiController TrangThaiController = new TrangThaiController();
         thuController thuController = new thuController();
+        string maCuongPrevious = "";
         string maNhanvien = "";
         string maThu = "";
         string maThucAn = "";
@@ -670,6 +671,8 @@ namespace QuanLyVuonThu
         {
             if (dtgvThu.CurrentRow.Cells[4].Value.ToString().Length != 0)
                 soLuongThuPrevious = Convert.ToInt32(dtgvThu.CurrentRow.Cells[4].Value.ToString());
+            if (dtgvThu.CurrentRow.Cells[3].Value.ToString().Length != 0)
+                maCuongPrevious = dtgvThu.CurrentRow.Cells[3].Value.ToString();
             maThu = dtgvThu.CurrentRow.Cells[0].Value.ToString();
             btnSuaThu.Enabled = true;
             txtMaThu.Text = dtgvThu.CurrentRow.Cells[0].Value.ToString();
@@ -750,7 +753,7 @@ namespace QuanLyVuonThu
             string sql = " select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from loai,thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
                 "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu and loai.maloai = Thu.maloai and (thu.mathu  like '%" + txtTimKiemThu.Text + "%' or thu.tenthu like '%" + txtTimKiemThu.Text + "%' or loai.maloai like '%" + txtTimKiemThu.Text + "%' or thu.kieusinh like '%" + txtTimKiemThu.Text + "%' or thu.nguongoc like '%" + txtTimKiemThu.Text + "%' )";
             Golobal.GolobalThu.giatritimkiem = txtTimKiemThu.Text;
-            Golobal.GolobalThu.kquaTimKiem = dtBase.DocDL(sql);
+            Golobal.GolobalThu.kquaTimKiemThu = dtBase.DocDL(sql);
             frmTKiemThu frmTKiemThu = new frmTKiemThu();
             frmTKiemThu.ShowDialog();
 
@@ -766,7 +769,7 @@ namespace QuanLyVuonThu
 
                 if (openFileDialog.FileName.Length == 0)
                 {
-                    dtBase.CapNhatDuLieu("update thu  set mathu =  N'" + txtMaThu.Text + "',tenthu =  N'" + txtTenThu.Text + "'," +
+                    dtBase.CapNhatDuLieu("update thu  set tenthu =  N'" + txtTenThu.Text + "'," +
                         "maloai =  N'" + cbbMaLoai.Text + "',soluong =  N'" + Convert.ToInt32(cbbSoLuongThu.Text) + "',sachdo =  N'"
                         + cbbSachDoThu.Text + "',tenkhoahoc =  N'" + txtTenKHThu.Text + "',tenTA =  N'" + txtTenTA.Text
                         + "',tenTV =  N'" + txtTenTV.Text + "',kieusinh =  N'" + cbbKieuSinh.Text + "',gioitinh =  N'"
@@ -777,7 +780,7 @@ namespace QuanLyVuonThu
                 }
                 else
                 {
-                    dtBase.CapNhatDuLieu("update thu  set mathu =  N'" + txtMaThu.Text + "',tenthu =  N'"
+                    dtBase.CapNhatDuLieu("update thu  set tenthu =  N'"
                         + txtTenThu.Text + "',maloai =  N'" + cbbMaLoai.Text + "',soluong =  '" + Convert.ToInt32(cbbSoLuongThu.Text)
                         + "',sachdo =  N'" + cbbSachDoThu.Text + "',tenkhoahoc =  N'" + txtTenKHThu.Text + "'," +
                         "tenTA =  N'" + txtTenTA.Text + "',tenTV =  N'" + txtTenTV.Text + "',kieusinh =  N'"
@@ -788,27 +791,58 @@ namespace QuanLyVuonThu
                         + "', anh = '" + ImageToBase64(openFileDialog.FileName) + "' where mathu ='"
                         + txtMaThu.Text + "'");
                 }
-                dtBase.CapNhatDuLieu("update thu_chuong  set machuong =  '" + cbbMaChuong.Text + "'," +
+                dtBase.CapNhatDuLieu("update thu_chuong  set machuong =  N'" + cbbMaChuong.Text + "'," +
                     "mathu =  N'" + txtMaThu.Text + "',ngayvao =  '" + Convert.ToDateTime(dtpNgayVaoThu.Text)
-                    + "',lydovao =  N'" + txtLyDoVao.Text + "' where machuong = '" + cbbMaChuong.Text + "' and mathu = '" + txtMaThu.Text + "'");
+                    + "',lydovao =  N'" + txtLyDoVao.Text + "' where machuong = '" + maCuongPrevious + "' and mathu = '" + txtMaThu.Text + "'");
 
-                dtBase.CapNhatDuLieu("update thu_thucan  set mathu =  '" + txtMaThu.Text + "'," +
+                dtBase.CapNhatDuLieu("update thu_thucan  set " +
                     "mathucansang =  N'" + getMaThucAn(cbbThucAnSang.Text) + "',SLThucAnSang =  '" + Convert.ToInt32(cbbSLThucAnSang.Text)
                     + "',mathucantrua =  N'" + getMaThucAn(cbbThucAnTrua.Text) + "',SLThucAnTrua =  '" + Convert.ToInt32(cbbSLThucAnTrua.Text)
                     + "',mathucantoi =  N'" + getMaThucAn(cbbThucAntoi.Text) + "',SLThucAnToi =  '" + Convert.ToInt32(cbbSLThucAnToi.Text) + "' where  mathu = '" + maThu + "'");
-                SqlDataReader reader = dtBase.command("select soluongthu from chuong where machuong = '" + cbbMaChuong.Text + "' ").ExecuteReader();
-                if (reader.HasRows)
+
+                if (cbbMaChuong.Text.Equals(maCuongPrevious))
                 {
-                    // Đọc kết quả
-                    while (reader.Read())
+                    SqlDataReader reader = dtBase.command("select soluongthu from chuong where machuong = '" + cbbMaChuong.Text + "' ").ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        soLuongThu = Convert.ToInt32(reader[0].ToString());
+                        // Đọc kết quả
+                        while (reader.Read())
+                        {
+                            soLuongThu = Convert.ToInt32(reader[0].ToString());
+                        }
                     }
+                    soLuongThu = soLuongThu - soLuongThuPrevious + Convert.ToInt32(cbbSoLuongThu.Text);
+                    dtBase.CapNhatDuLieu("update chuong set soluongthu ='" + soLuongThu + "' where machuong ='" + cbbMaChuong.Text + "' ");
                 }
+                else
+                {
+                    int solgthuChuongcu = 0;
+                    SqlDataReader reader = dtBase.command("select soluongthu from chuong where machuong = '" + cbbMaChuong.Text + "' ").ExecuteReader();
 
-                soLuongThu = soLuongThu - soLuongThuPrevious + Convert.ToInt32(cbbSoLuongThu.Text);
-                dtBase.CapNhatDuLieu("update chuong set soluongthu ='" + soLuongThu + "' where machuong ='" + cbbMaChuong.Text + "' ");
+                    if (reader.HasRows)
+                    {
+                        // Đọc kết quả
+                        while (reader.Read())
+                        {
+                            soLuongThu = Convert.ToInt32(reader[0].ToString());
+                        }
+                    }
+                    soLuongThu = soLuongThu + Convert.ToInt32(cbbSoLuongThu.Text);
+                    dtBase.CapNhatDuLieu("update chuong set soluongthu ='" + soLuongThu + "' where machuong ='" + cbbMaChuong.Text + "' ");
 
+                    SqlDataReader reader1 = dtBase.command("select soluongthu from chuong where machuong = '" + maCuongPrevious + "' ").ExecuteReader();
+                    if (reader1.HasRows)
+                    {
+                        // Đọc kết quả
+                        while (reader1.Read())
+                        {
+                            solgthuChuongcu = Convert.ToInt32(reader1[0].ToString());
+                        }
+                    }
+                    solgthuChuongcu = solgthuChuongcu - soLuongThuPrevious;
+                    dtBase.CapNhatDuLieu("update chuong set soluongthu ='" + solgthuChuongcu + "' where machuong ='" + maCuongPrevious + "' ");
+
+                }
 
                 MessageBox.Show("Bạn đã sửa thành công");
                 dtgvThu.DataSource = dtBase.DocDL("select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
@@ -1084,7 +1118,7 @@ namespace QuanLyVuonThu
             }
             else
             {
-                listMaChuong.Clear();
+                /*listMaChuong.Clear();
                 int check = 0;
                 SqlDataReader reader = dtBase.command("select machuong from chuong ").ExecuteReader();
                 if (reader.HasRows)
@@ -1114,8 +1148,36 @@ namespace QuanLyVuonThu
                     dtBase.CapNhatDuLieu(sql);
                     MessageBox.Show("bạn đã thêm thành công");
                     dtgvChuong.DataSource = dtBase.DocDL("select *  from chuong");
+                }*/
+                int maxMaChuong = 0;
+                List<int> LSTmachuongs = new List<int>();
+                SqlDataReader readerMaChuong = dtBase.command("select machuong from chuong").ExecuteReader();
+                if (readerMaChuong.HasRows)
+                {
+                    // Đọc kết quả
+                    while (readerMaChuong.Read())
+                    {
+                        LSTmachuongs.Add(Convert.ToInt32(readerMaChuong[0].ToString().Substring(1)));
+                    }
                 }
+                if (LSTmachuongs.Count != 0)
+                {
+                    maxMaChuong = LSTmachuongs[0];
+                    for (int i = 1; i < LSTmachuongs.Count; i++)
+                    {
+                        if (maxMaChuong < LSTmachuongs[i]) maxMaChuong = LSTmachuongs[i];
+                    }
+                }
+                maxMaChuong += 1;
+                string sql = " insert into chuong values(N'C" + maxMaChuong + "',N'" + cbbTenLoai.Text + "',N'" + txtMaKhuChuong.Text + "','" + Convert.ToDouble(txtDienTichChuong.Text)
+                       + "','" + Convert.ToDouble(txtChieuCaoChuong.Text) + "',N'" + txtSoLuongThuChuong.Text
+                       + "',N'" + TrangThaiController.getMaTrangThai(cbbTrangthai.Text) + "',N'" + nhanVienController.getMaNhanVien(cbbNhanVienTrongCoi.Text)
+                       + "',N'" + txtGhiChu.Text + "' )";
+                dtBase.CapNhatDuLieu(sql);
+                MessageBox.Show("bạn đã thêm thành công");
+                dtgvChuong.DataSource = dtBase.DocDL("select *  from chuong");
             }
+
             load();
         }
 
@@ -1195,7 +1257,7 @@ namespace QuanLyVuonThu
             }
             else
             {
-                listMaChuong.Clear();
+                /*listMaChuong.Clear();
                 int check = 0;
                 SqlDataReader reader = dtBase.command("select machuong from chuong where machuong !='" + txtMaChuong.Text + "' ").ExecuteReader();
                 if (reader.HasRows)
@@ -1228,7 +1290,15 @@ namespace QuanLyVuonThu
                     dtBase.CapNhatDuLieu(sql1);
                     MessageBox.Show("bạn đã sửa thành công");
                     dtgvChuong.DataSource = dtBase.DocDL("select *  from chuong");
-                }
+                }*/
+                string sql = " update chuong set maloai = N'" + cbbTenLoai.Text + "'"
+                        + ",makhu = N'" + txtMaKhuChuong.Text + "',dientich = '" + Convert.ToDouble(txtDienTichChuong.Text)
+                        + "',chieucao = '" + Convert.ToDouble(txtChieuCaoChuong.Text) + "',soluongthu = '" + txtSoLuongThuChuong.Text
+                        + "',matrangthai = '" + TrangThaiController.getMaTrangThai(cbbTrangthai.Text) + "',nhanvientrongcoi = '" + nhanVienController.getMaNhanVien(cbbNhanVienTrongCoi.Text)
+                        + "',ghichu = N'" + txtGhiChu.Text + "' where machuong = '" + maChuong + "'";
+                dtBase.CapNhatDuLieu(sql);
+                MessageBox.Show("bạn đã sửa thành công");
+                dtgvChuong.DataSource = dtBase.DocDL("select *  from chuong");
             }
             load();
         }
@@ -1472,6 +1542,17 @@ namespace QuanLyVuonThu
         private void BtnClearChuong_Click(object sender, EventArgs e)
         {
             resetChuong();
+        }
+
+        private void BtnTimKiemChuong_Click(object sender, EventArgs e)
+        {
+            string sql = "select chuong.MaChuong,chuong.MaLoai,MaKhu,DienTich,ChieuCao,SoLuongThu,TenTrangThai,TenNhanVien,chuong.GhiChu from chuong, trangthai,nhanvien,thu,thu_chuong  where chuong.NhanVienTrongCoi = nhanvien.MaNhanVien " +
+               "and chuong.matrangthai = trangthai.matrangthai   and (nhanvien.tennhanvien  like '%" + txtTimKiemChuong.Text + "%' or thu.soluong like '%" + txtTimKiemChuong.Text + "%' or ( chuong.machuong = thu_chuong.machuong and thu_chuong.mathu= thu.mathu and thu.mathu like '%" + txtTimKiemChuong.Text + "%') or ( chuong.machuong = thu_chuong.machuong and thu_chuong.mathu= thu.mathu and thu.tenthu like '%" + txtTimKiemChuong.Text + "%') or chuong.machuong like '%" + txtTimKiemChuong.Text + "%' ) "
+               + "group by chuong.machuong,chuong.maloai,chuong.MaKhu,chuong.DienTich,chuong.ChieuCao,chuong.SoLuongThu,trangthai.TenTrangThai,nhanvien.TenNhanVien,chuong.GhiChu";
+            Golobal.GolobalThu.giatritimkiem = txtTimKiemChuong.Text;
+            Golobal.GolobalThu.kquaTimKiemChuong = dtBase.DocDL(sql);
+            frmTimKiemChuong frmTimKiemChuong = new frmTimKiemChuong();
+            frmTimKiemChuong.ShowDialog();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace QuanLyVuonThu.Golobal
     class GolobalThu
     {
 
-        public static DataTable kquaTimKiem = new DataTable();
+        public static DataTable kquaTimKiemThu = new DataTable();
         public static string giatritimkiem;
-
+        public static DataTable kquaTimKiemChuong = new DataTable();
     }
 }

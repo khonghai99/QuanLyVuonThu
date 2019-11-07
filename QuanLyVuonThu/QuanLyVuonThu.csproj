@@ -89,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ChuongController.cs" />
+    <Compile Include="frmTimKiemChuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimKiemChuong.Designer.cs">
+      <DependentUpon>frmTimKiemChuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTKiemThu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Controller\thuController.cs" />
+    <EmbeddedResource Include="frmTimKiemChuong.resx">
+      <DependentUpon>frmTimKiemChuong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTKiemThu.resx">
       <DependentUpon>frmTKiemThu.cs</DependentUpon>
     </EmbeddedResource>

@@ -195,7 +195,6 @@
             this.txtTimKiemChuong = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.cboTimKiemChuong = new System.Windows.Forms.ComboBox();
             this.btnTimKiemChuong = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.tpThucAn = new System.Windows.Forms.TabPage();
@@ -1439,6 +1438,7 @@
             // 
             // txtMaThu
             // 
+            this.txtMaThu.Enabled = false;
             this.txtMaThu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaThu.Location = new System.Drawing.Point(174, 56);
             this.txtMaThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1900,7 +1900,6 @@
             this.panel3.Controls.Add(this.txtTimKiemChuong);
             this.panel3.Controls.Add(this.label29);
             this.panel3.Controls.Add(this.label31);
-            this.panel3.Controls.Add(this.cboTimKiemChuong);
             this.panel3.Controls.Add(this.btnTimKiemChuong);
             this.panel3.Controls.Add(this.label30);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2066,6 +2065,7 @@
             // 
             // txtMaChuong
             // 
+            this.txtMaChuong.Enabled = false;
             this.txtMaChuong.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaChuong.Location = new System.Drawing.Point(429, 79);
             this.txtMaChuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -2142,10 +2142,10 @@
             // txtTimKiemChuong
             // 
             this.txtTimKiemChuong.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiemChuong.Location = new System.Drawing.Point(1232, 316);
+            this.txtTimKiemChuong.Location = new System.Drawing.Point(1007, 318);
             this.txtTimKiemChuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTimKiemChuong.Name = "txtTimKiemChuong";
-            this.txtTimKiemChuong.Size = new System.Drawing.Size(167, 27);
+            this.txtTimKiemChuong.Size = new System.Drawing.Size(304, 27);
             this.txtTimKiemChuong.TabIndex = 42;
             // 
             // label29
@@ -2168,28 +2168,13 @@
             this.label31.TabIndex = 18;
             this.label31.Text = "Mã khu";
             // 
-            // cboTimKiemChuong
-            // 
-            this.cboTimKiemChuong.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboTimKiemChuong.FormattingEnabled = true;
-            this.cboTimKiemChuong.Items.AddRange(new object[] {
-            "Tên thú",
-            "Loài thú",
-            "Kiểu sinh",
-            "Nguồn gốc"});
-            this.cboTimKiemChuong.Location = new System.Drawing.Point(1007, 316);
-            this.cboTimKiemChuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboTimKiemChuong.Name = "cboTimKiemChuong";
-            this.cboTimKiemChuong.Size = new System.Drawing.Size(119, 27);
-            this.cboTimKiemChuong.TabIndex = 40;
-            // 
             // btnTimKiemChuong
             // 
             this.btnTimKiemChuong.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKiemChuong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTimKiemChuong.ImageIndex = 6;
             this.btnTimKiemChuong.ImageList = this.imgL1;
-            this.btnTimKiemChuong.Location = new System.Drawing.Point(1505, 313);
+            this.btnTimKiemChuong.Location = new System.Drawing.Point(1418, 315);
             this.btnTimKiemChuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimKiemChuong.Name = "btnTimKiemChuong";
             this.btnTimKiemChuong.Size = new System.Drawing.Size(101, 31);
@@ -2197,6 +2182,7 @@
             this.btnTimKiemChuong.Text = "Tìm kiếm";
             this.btnTimKiemChuong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTimKiemChuong.UseVisualStyleBackColor = true;
+            this.btnTimKiemChuong.Click += new System.EventHandler(this.BtnTimKiemChuong_Click);
             // 
             // label30
             // 
@@ -3221,7 +3207,6 @@
         private System.Windows.Forms.PictureBox pbThu;
         private System.Windows.Forms.TextBox txtTimKiemChuong;
         private System.Windows.Forms.Button btnTimKiemChuong;
-        private System.Windows.Forms.ComboBox cboTimKiemChuong;
         private System.Windows.Forms.TabPage tpThongTinHeThong;
         private System.Windows.Forms.ImageList imgL1;
         private System.Windows.Forms.Button btnClear;
