@@ -11,6 +11,7 @@ namespace QuanLyVuonThu.Golobal
     {
 
         public static DataTable kquaTimKiem = new DataTable();
+        public static string giatritimkiem;
 
     }
 }

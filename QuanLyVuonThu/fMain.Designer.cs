@@ -110,6 +110,7 @@
             this.dtgvThu = new System.Windows.Forms.DataGridView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.refreshThu = new System.Windows.Forms.Button();
             this.cbbKieuSinh = new System.Windows.Forms.ComboBox();
             this.cbbGioiTinhThu = new System.Windows.Forms.ComboBox();
             this.pbThu = new System.Windows.Forms.PictureBox();
@@ -170,12 +171,13 @@
             this.dtgvChuong = new System.Windows.Forms.DataGridView();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnRefreshChuong = new System.Windows.Forms.Button();
             this.txtDienTichChuong = new System.Windows.Forms.TextBox();
             this.cbbTenLoai = new System.Windows.Forms.ComboBox();
             this.txtSoLuongThuChuong = new System.Windows.Forms.TextBox();
-            this.cbbNhanVien = new System.Windows.Forms.ComboBox();
+            this.cbbNhanVienTrongCoi = new System.Windows.Forms.ComboBox();
             this.txtChieuCaoChuong = new System.Windows.Forms.TextBox();
-            this.cbbMaTT = new System.Windows.Forms.ComboBox();
+            this.cbbTrangthai = new System.Windows.Forms.ComboBox();
             this.label36 = new System.Windows.Forms.Label();
             this.btnClearChuong = new System.Windows.Forms.Button();
             this.txtMaKhuChuong = new System.Windows.Forms.TextBox();
@@ -1188,6 +1190,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.refreshThu);
             this.panel1.Controls.Add(this.cbbKieuSinh);
             this.panel1.Controls.Add(this.cbbGioiTinhThu);
             this.panel1.Controls.Add(this.pbThu);
@@ -1249,6 +1252,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1896, 314);
             this.panel1.TabIndex = 73;
+            // 
+            // refreshThu
+            // 
+            this.refreshThu.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshThu.Location = new System.Drawing.Point(73, 254);
+            this.refreshThu.Name = "refreshThu";
+            this.refreshThu.Size = new System.Drawing.Size(103, 31);
+            this.refreshThu.TabIndex = 109;
+            this.refreshThu.Text = "refresh";
+            this.refreshThu.UseVisualStyleBackColor = true;
+            this.refreshThu.Click += new System.EventHandler(this.Button1_Click);
             // 
             // cbbKieuSinh
             // 
@@ -1689,7 +1703,7 @@
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClear.ImageIndex = 2;
             this.btnClear.ImageList = this.imgL1;
-            this.btnClear.Location = new System.Drawing.Point(106, 257);
+            this.btnClear.Location = new System.Drawing.Point(244, 255);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(91, 28);
@@ -1769,7 +1783,7 @@
             this.btnThemThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThemThu.ImageIndex = 1;
             this.btnThemThu.ImageList = this.imgL1;
-            this.btnThemThu.Location = new System.Drawing.Point(373, 255);
+            this.btnThemThu.Location = new System.Drawing.Point(446, 255);
             this.btnThemThu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThemThu.Name = "btnThemThu";
             this.btnThemThu.Size = new System.Drawing.Size(91, 28);
@@ -1862,12 +1876,13 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnRefreshChuong);
             this.panel3.Controls.Add(this.txtDienTichChuong);
             this.panel3.Controls.Add(this.cbbTenLoai);
             this.panel3.Controls.Add(this.txtSoLuongThuChuong);
-            this.panel3.Controls.Add(this.cbbNhanVien);
+            this.panel3.Controls.Add(this.cbbNhanVienTrongCoi);
             this.panel3.Controls.Add(this.txtChieuCaoChuong);
-            this.panel3.Controls.Add(this.cbbMaTT);
+            this.panel3.Controls.Add(this.cbbTrangthai);
             this.panel3.Controls.Add(this.label36);
             this.panel3.Controls.Add(this.btnClearChuong);
             this.panel3.Controls.Add(this.txtMaKhuChuong);
@@ -1893,6 +1908,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1896, 378);
             this.panel3.TabIndex = 51;
+            // 
+            // btnRefreshChuong
+            // 
+            this.btnRefreshChuong.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRefreshChuong.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshChuong.Location = new System.Drawing.Point(59, 313);
+            this.btnRefreshChuong.Name = "btnRefreshChuong";
+            this.btnRefreshChuong.Size = new System.Drawing.Size(100, 31);
+            this.btnRefreshChuong.TabIndex = 51;
+            this.btnRefreshChuong.Text = "Refresh";
+            this.btnRefreshChuong.UseVisualStyleBackColor = true;
+            this.btnRefreshChuong.Click += new System.EventHandler(this.BtnRefreshChuong_Click);
             // 
             // txtDienTichChuong
             // 
@@ -1923,14 +1950,14 @@
             this.txtSoLuongThuChuong.TabIndex = 28;
             this.txtSoLuongThuChuong.Text = "0";
             // 
-            // cbbNhanVien
+            // cbbNhanVienTrongCoi
             // 
-            this.cbbNhanVien.FormattingEnabled = true;
-            this.cbbNhanVien.Location = new System.Drawing.Point(1377, 149);
-            this.cbbNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbbNhanVien.Name = "cbbNhanVien";
-            this.cbbNhanVien.Size = new System.Drawing.Size(142, 24);
-            this.cbbNhanVien.TabIndex = 49;
+            this.cbbNhanVienTrongCoi.FormattingEnabled = true;
+            this.cbbNhanVienTrongCoi.Location = new System.Drawing.Point(1377, 149);
+            this.cbbNhanVienTrongCoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbbNhanVienTrongCoi.Name = "cbbNhanVienTrongCoi";
+            this.cbbNhanVienTrongCoi.Size = new System.Drawing.Size(142, 24);
+            this.cbbNhanVienTrongCoi.TabIndex = 49;
             // 
             // txtChieuCaoChuong
             // 
@@ -1941,14 +1968,14 @@
             this.txtChieuCaoChuong.Size = new System.Drawing.Size(151, 26);
             this.txtChieuCaoChuong.TabIndex = 27;
             // 
-            // cbbMaTT
+            // cbbTrangthai
             // 
-            this.cbbMaTT.FormattingEnabled = true;
-            this.cbbMaTT.Location = new System.Drawing.Point(1377, 76);
-            this.cbbMaTT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbbMaTT.Name = "cbbMaTT";
-            this.cbbMaTT.Size = new System.Drawing.Size(142, 24);
-            this.cbbMaTT.TabIndex = 48;
+            this.cbbTrangthai.FormattingEnabled = true;
+            this.cbbTrangthai.Location = new System.Drawing.Point(1377, 76);
+            this.cbbTrangthai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbbTrangthai.Name = "cbbTrangthai";
+            this.cbbTrangthai.Size = new System.Drawing.Size(142, 24);
+            this.cbbTrangthai.TabIndex = 48;
             // 
             // label36
             // 
@@ -1956,9 +1983,9 @@
             this.label36.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(1191, 82);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(107, 18);
+            this.label36.Size = new System.Drawing.Size(84, 18);
             this.label36.TabIndex = 34;
-            this.label36.Text = "Mã trạng thái";
+            this.label36.Text = "Trạng thái";
             // 
             // btnClearChuong
             // 
@@ -1974,6 +2001,7 @@
             this.btnClearChuong.Text = "Clear";
             this.btnClearChuong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClearChuong.UseVisualStyleBackColor = true;
+            this.btnClearChuong.Click += new System.EventHandler(this.BtnClearChuong_Click);
             // 
             // txtMaKhuChuong
             // 
@@ -3281,8 +3309,8 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ComboBox cbbKieuSinh;
-        private System.Windows.Forms.ComboBox cbbNhanVien;
-        private System.Windows.Forms.ComboBox cbbMaTT;
+        private System.Windows.Forms.ComboBox cbbNhanVienTrongCoi;
+        private System.Windows.Forms.ComboBox cbbTrangthai;
         private System.Windows.Forms.ComboBox cbbTenLoai;
         private System.Windows.Forms.PictureBox pbAnhNhanVien;
         private System.Windows.Forms.DateTimePicker dtpNgaySinhNV;
@@ -3301,5 +3329,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DataGridView dtgvThucAn;
         private System.Windows.Forms.Splitter splitter4;
+        private System.Windows.Forms.Button refreshThu;
+        private System.Windows.Forms.Button btnRefreshChuong;
     }
 }
