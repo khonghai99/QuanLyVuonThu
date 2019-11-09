@@ -14,7 +14,8 @@ using System.IO;
 using System.Data.SqlClient;
 using CrystalDecisions.Windows.Forms;
 using QuanLyVuonThu.Controller;
-
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace QuanLyVuonThu
 {
@@ -49,7 +50,39 @@ namespace QuanLyVuonThu
             Regex regex = new Regex(@"^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$");
             return regex.IsMatch(str);
         }
+        public void export_excel(string str, string rpt)
+        {
+            DataTable dtThu = dtBase.DocDL(str);
+            ReportDocument rdReport = new ReportDocument();
+            rdReport.Load(@"C:\Users\khong\source\repos\khonghai99\QuanLyVuonThu\QuanLyVuonThu\" + rpt + ".rpt");
+            rdReport.SetDataSource(dtThu);
+            ExportOptions exportOption;
+            //DiskFileDestinationOptions Cung cấp các thuộc tính để truy xuất và đặt tên tệp khi xuất ra đĩa.
+            DiskFileDestinationOptions diskFileDestinationOptions = new DiskFileDestinationOptions();
 
+            SaveFileDialog sfd = new SaveFileDialog();
+            //sfd.Filter = "Pdf Files|*.pdf";
+            sfd.Filter = "Excel |*.xls";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                diskFileDestinationOptions.DiskFileName = sfd.FileName;
+                exportOption = rdReport.ExportOptions;
+                {
+                    exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
+                    exportOption.ExportFormatType = ExportFormatType.Excel;
+                    exportOption.DestinationOptions = diskFileDestinationOptions;
+                    exportOption.FormatOptions = new ExcelFormatOptions();
+                }
+                rdReport.Export();
+                rdReport.Close();
+                rdReport.Dispose();
+                MessageBox.Show("Export thành công !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+
+            }
+        }
         ProcessDataBase dtBase = new ProcessDataBase();
         public void ResetValue() // reset button, cbb, rdb, dtp
         {
@@ -322,29 +355,48 @@ namespace QuanLyVuonThu
             }
             return TenTA;
         }
-        private void BbtnitLoai_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            DataTable dtThu = dtBase.DocDL("SELECT Loai.TenLoai, Loai.MaLoai," +
-                " Thu.TenThu, Thu.SoLuong, Thu.GioiTinh, Thu.KieuSinh,Thu.NguonGoc," +
-                " Thu.DacDiem FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
-            rpTheoLoai rp = new rpTheoLoai();
-            rp.SetDataSource(dtThu);
-            crystalReportViewer1.ReportSource = rp;
-            tclDS.SelectTab(7);
-        }
 
         private void BbtnitSachDo_ItemClick(object sender, ItemClickEventArgs e)
         {
+            DataTable dtThu = dtBase.DocDL("SELECT Thu.SachDo, Thu.TenThu, Loai.TenLoai," +
+                " Thu.SoLuong, Thu.NguonGoc, Thu.DacDiem, Thu.TuoiTho " +
+                "FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
+            rpSachDo rp = new rpSachDo();
+            rp.SetDataSource(dtThu);
+            rpvSachDo.ReportSource = rp;
             tclDS.SelectTab(8);
         }
 
         private void BbtnitOm_ItemClick(object sender, ItemClickEventArgs e)
         {
+            DataTable dtThu = dtBase.DocDL("SELECT Thu.MaThu, Thu.TenThu, Loai.TenLoai," +
+                " Thu.SoLuong, Thu.SachDo, Thu.NguonGoc, Thu.DacDiem, SuKien.TenSukien," +
+                " KhacPhuc.TenCachKhacPhuc FROM Loai INNER JOIN " +
+                "Thu ON Loai.MaLoai = Thu.MaLoai INNER JOIN Thu_SuKien " +
+                "ON Thu.MaThu = Thu_SuKien.MaThu INNER JOIN SuKien " +
+                "ON Thu_SuKien.MaSK = SuKien.MaSuKien INNER JOIN KhacPhuc " +
+                "ON Thu_SuKien.MaKhacPhuc = KhacPhuc.MaKhacPhuc " +
+                "WHERE SuKien.TenSukien = N'Ốm'");
+            rpOm rp = new rpOm();
+            rp.SetDataSource(dtThu);
+            rpvOm.ReportSource = rp;
             tclDS.SelectTab(9);
         }
 
         private void BbtnitChiTiet_ItemClick(object sender, ItemClickEventArgs e)
         {
+            DataTable dtThu = dtBase.DocDL("SELECT DISTINCT Thu.MaThu, Thu.TenThu, Loai.TenLoai," +
+                " Thu.SoLuong, Thu.NguonGoc, Thu.DacDiem, SuKien.TenSukien," +
+                " KhacPhuc.TenCachKhacPhuc, NhanVien.TenNhanVien, Chuong.MaChuong " +
+                "FROM Chuong INNER JOIN Loai ON Chuong.MaLoai = Loai.MaLoai " +
+                "INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai INNER JOIN " +
+                "Thu_Chuong ON Chuong.MaChuong = Thu_Chuong.MaChuong INNER " +
+                "JOIN Thu_SuKien ON Thu.MaThu = Thu_SuKien.MaThu INNER JOIN " +
+                "NhanVien ON Chuong.NhanVienTrongCoi = NhanVien.MaNhanVien " +
+                "CROSS JOIN KhacPhuc CROSS JOIN SuKien");
+            rpChiTiet rp = new rpChiTiet();
+            rp.SetDataSource(dtThu);
+            rpvChiTiet.ReportSource = rp;
             tclDS.SelectTab(10);
         }
 
@@ -355,7 +407,15 @@ namespace QuanLyVuonThu
 
         private void BbtnitMaThu_ItemClick(object sender, ItemClickEventArgs e)
         {
-            tclDS.SelectTab(12);
+            DataTable dtThu = dtBase.DocDL("SELECT Thu.MaThu, Thu.TenThu, Loai.TenLoai, Thu.SoLuong," +
+                " Thu_ThucAn.MaThucAnSang, Thu_ThucAn.SLThucAnSang, Thu_ThucAn.MaThucAnTrua," +
+                " Thu_ThucAn.SLThucAnTrua, Thu_ThucAn.MaThucAnToi, Thu_ThucAn.SlThucAnToi," +
+                " Thu_ThucAn.TongChiPhi FROM  Thu_ThucAn INNER JOIN Thu ON Thu_ThucAn.MaThu = Thu.MaThu " +
+                "INNER JOIN Loai ON Thu.MaLoai = Loai.MaLoai");
+            rpChiPhi rp = new rpChiPhi();
+            rp.SetDataSource(dtThu);
+            rpvChiPhi.ReportSource = rp;
+            tclDS.SelectTab(11);
         }
 
         private bool check()
@@ -1553,6 +1613,74 @@ namespace QuanLyVuonThu
             Golobal.GolobalThu.kquaTimKiemChuong = dtBase.DocDL(sql);
             frmTimKiemChuong frmTimKiemChuong = new frmTimKiemChuong();
             frmTimKiemChuong.ShowDialog();
+        }
+
+        private void BbtnitLoai_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            DataTable dtThu = dtBase.DocDL("SELECT Loai.MaLoai, Loai.TenLoai, Thu.TenThu," +
+                " Thu.SoLuong, Thu.SachDo, Thu.TenKhoaHoc, Thu.KieuSinh, Thu.NguonGoc," +
+                " Thu.DacDiem, Thu.TuoiTho " +
+                "FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai");
+            rpTheoLoai rp = new rpTheoLoai();
+            rp.SetDataSource(dtThu);
+            rpvTheoLoai.ReportSource = rp;
+            tclDS.SelectTab(7);
+        }
+
+        private void BtnExportTheoLoai_Click(object sender, EventArgs e)
+        {
+            string str = "SELECT Loai.MaLoai, Loai.TenLoai, Thu.TenThu," +
+                " Thu.SoLuong, Thu.SachDo, Thu.TenKhoaHoc, Thu.KieuSinh, Thu.NguonGoc," +
+                " Thu.DacDiem, Thu.TuoiTho FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai";
+            string rpt = "rpTheoLoai";
+            export_excel(str, rpt);
+        }
+
+        private void BtnExportSachDo_Click(object sender, EventArgs e)
+        {
+            string str = "SELECT Thu.SachDo, Thu.TenThu, Loai.TenLoai," +
+                " Thu.SoLuong, Thu.NguonGoc, Thu.DacDiem, Thu.TuoiTho " +
+                "FROM Loai INNER JOIN Thu ON Loai.MaLoai = Thu.MaLoai";
+            string rpt = "rpSachDo";
+            export_excel(str, rpt);
+        }
+
+        private void BtnExportOm_Click(object sender, EventArgs e)
+        {
+            string str = "SELECT Thu.MaThu, Thu.TenThu, Loai.TenLoai," +
+                " Thu.SoLuong, Thu.SachDo, Thu.NguonGoc, Thu.DacDiem, SuKien.TenSukien," +
+                " KhacPhuc.TenCachKhacPhuc FROM Loai INNER JOIN Thu ON Loai.MaLoai " +
+                "= Thu.MaLoai INNER JOIN Thu_SuKien ON Thu.MaThu = Thu_SuKien.MaThu INNER" +
+                " JOIN SuKien ON Thu_SuKien.MaSK = SuKien.MaSuKien INNER JOIN KhacPhuc ON" +
+                " Thu_SuKien.MaKhacPhuc = KhacPhuc.MaKhacPhuc WHERE SuKien.TenSukien = N'Ốm'";
+            string rpt = "rpOm";
+            export_excel(str, rpt);
+        }
+
+        private void BtnExportChiTiet_Click(object sender, EventArgs e)
+        {
+            string str = "SELECT Thu.MaThu, Thu.TenThu, Loai.TenLoai," +
+                " Thu.SoLuong, Thu.NguonGoc, Thu.DacDiem, SuKien.TenSukien," +
+                " KhacPhuc.TenCachKhacPhuc, NhanVien.TenNhanVien, Chuong.MaChuong" +
+                " FROM Chuong INNER JOIN Loai ON Chuong.MaLoai = Loai.MaLoai INNER" +
+                " JOIN Thu ON Loai.MaLoai = Thu.MaLoai INNER JOIN Thu_Chuong " +
+                "ON Chuong.MaChuong = Thu_Chuong.MaChuong INNER JOIN Thu_SuKien " +
+                "ON Thu.MaThu = Thu_SuKien.MaThu INNER JOIN NhanVien " +
+                "ON Chuong.NhanVienTrongCoi = NhanVien.MaNhanVien CROSS " +
+                "JOIN KhacPhuc CROSS JOIN SuKien";
+            string rpt = "rpChiTiet";
+            export_excel(str, rpt);
+        }
+
+        private void BtnExportChiPhi_Click(object sender, EventArgs e)
+        {
+            string str = "SELECT Thu.MaThu, Thu.TenThu, Loai.TenLoai, Thu.SoLuong," +
+                " Thu_ThucAn.MaThucAnSang, Thu_ThucAn.SLThucAnSang, Thu_ThucAn.MaThucAnTrua," +
+                " Thu_ThucAn.SLThucAnTrua, Thu_ThucAn.MaThucAnToi, Thu_ThucAn.SlThucAnToi," +
+                " Thu_ThucAn.TongChiPhi FROM  Thu_ThucAn INNER JOIN Thu ON Thu_ThucAn.MaThu = Thu.MaThu " +
+                "INNER JOIN Loai ON Thu.MaLoai = Loai.MaLoai";
+            string rpt = "rpChiPhi";
+            export_excel(str, rpt);
         }
     }
 }

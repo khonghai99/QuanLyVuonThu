@@ -89,6 +89,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ChuongController.cs" />
+    <Compile Include="DataReport\DataChiPhi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataChiPhi.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataReport\DataChiTiet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataChiTiet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataReport\DataOm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataOm.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataReport\DataSachDo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSachDo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataReport\DataTheoLoai.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataTheoLoai.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmTimKiemChuong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,17 +135,6 @@
     <Compile Include="Model\ModelThucAn.cs" />
     <Compile Include="Model\ModelThucAnThu.cs" />
     <Compile Include="Model\ModelTrangThai.cs" />
-    <Compile Include="rpTheoLoai.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rpTheoLoai.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\DataThuTheoLoai\DataTheoLoai.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataTheoLoai.xsd</DependentUpon>
-    </Compile>
     <Compile Include="connectionDB\DBSQLServerUtils.cs" />
     <Compile Include="connectionDB\DBUtils.cs" />
     <Compile Include="fDangNhap.cs">
@@ -145,6 +159,36 @@
     <Compile Include="ProcessDataBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rpChiTiet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpChiTiet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpChiPhi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpChiPhi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpOm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpOm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpSachDo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpSachDo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpTheoLoai.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpTheoLoai.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Controller\thuController.cs" />
     <EmbeddedResource Include="frmTimKiemChuong.resx">
@@ -152,10 +196,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTKiemThu.resx">
       <DependentUpon>frmTKiemThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rpTheoLoai.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rpTheoLoai.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
@@ -177,16 +217,80 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="rpChiTiet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpChiTiet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpChiPhi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpChiPhi.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpOm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpOm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpSachDo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpSachDo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpTheoLoai.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpTheoLoai.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="Report\DataThuTheoLoai\DataTheoLoai.xsc">
+    <None Include="DataReport\DataChiPhi.xsc">
+      <DependentUpon>DataChiPhi.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataChiPhi.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataChiPhi.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataReport\DataChiPhi.xss">
+      <DependentUpon>DataChiPhi.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataChiTiet.xsc">
+      <DependentUpon>DataChiTiet.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataChiTiet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataChiTiet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataReport\DataChiTiet.xss">
+      <DependentUpon>DataChiTiet.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataOm.xsc">
+      <DependentUpon>DataOm.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataOm.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataOm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataReport\DataOm.xss">
+      <DependentUpon>DataOm.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataSachDo.xsc">
+      <DependentUpon>DataSachDo.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataSachDo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSachDo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataReport\DataSachDo.xss">
+      <DependentUpon>DataSachDo.xsd</DependentUpon>
+    </None>
+    <None Include="DataReport\DataTheoLoai.xsc">
       <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </None>
-    <None Include="Report\DataThuTheoLoai\DataTheoLoai.xsd">
-      <SubType>Designer</SubType>
+    <None Include="DataReport\DataTheoLoai.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataTheoLoai.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Report\DataThuTheoLoai\DataTheoLoai.xss">
+    <None Include="DataReport\DataTheoLoai.xss">
       <DependentUpon>DataTheoLoai.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />

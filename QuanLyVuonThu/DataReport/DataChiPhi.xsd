@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataChiPhi" targetNamespace="http://tempuri.org/DataChiPhi.xsd" xmlns:mstns="http://tempuri.org/DataChiPhi.xsd" xmlns="http://tempuri.org/DataChiPhi.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QuanLyVuonThuConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QuanLyVuonThuConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuanLyVuonThu.Properties.Settings.GlobalReference.Default.QuanLyVuonThuConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataChiPhiTableAdapter" GeneratorDataComponentClassName="DataChiPhiTableAdapter" Name="DataChiPhi" UserDataComponentName="DataChiPhiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyVuonThuConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Thu.MaThu, Thu.TenThu, Loai.TenLoai, Thu.SoLuong, Thu_ThucAn.MaThucAnSang, Thu_ThucAn.SLThucAnSang, Thu_ThucAn.MaThucAnTrua, Thu_ThucAn.SLThucAnTrua, Thu_ThucAn.MaThucAnToi, Thu_ThucAn.SlThucAnToi, 
+                         Thu_ThucAn.TongChiPhi
+FROM            Thu_ThucAn INNER JOIN
+                         Thu ON Thu_ThucAn.MaThu = Thu.MaThu INNER JOIN
+                         Loai ON Thu.MaLoai = Loai.MaLoai</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaThu" DataSetColumn="MaThu" />
+              <Mapping SourceColumn="TenThu" DataSetColumn="TenThu" />
+              <Mapping SourceColumn="TenLoai" DataSetColumn="TenLoai" />
+              <Mapping SourceColumn="SoLuong" DataSetColumn="SoLuong" />
+              <Mapping SourceColumn="MaThucAnSang" DataSetColumn="MaThucAnSang" />
+              <Mapping SourceColumn="SLThucAnSang" DataSetColumn="SLThucAnSang" />
+              <Mapping SourceColumn="MaThucAnTrua" DataSetColumn="MaThucAnTrua" />
+              <Mapping SourceColumn="SLThucAnTrua" DataSetColumn="SLThucAnTrua" />
+              <Mapping SourceColumn="MaThucAnToi" DataSetColumn="MaThucAnToi" />
+              <Mapping SourceColumn="SlThucAnToi" DataSetColumn="SlThucAnToi" />
+              <Mapping SourceColumn="TongChiPhi" DataSetColumn="TongChiPhi" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataChiPhi" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataChiPhi" msprop:Generator_UserDSName="DataChiPhi">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataChiPhi" msprop:Generator_TableClassName="DataChiPhiDataTable" msprop:Generator_TableVarName="tableDataChiPhi" msprop:Generator_TablePropName="_DataChiPhi" msprop:Generator_RowDeletingName="DataChiPhiRowDeleting" msprop:Generator_RowChangingName="DataChiPhiRowChanging" msprop:Generator_RowEvHandlerName="DataChiPhiRowChangeEventHandler" msprop:Generator_RowDeletedName="DataChiPhiRowDeleted" msprop:Generator_UserTableName="DataChiPhi" msprop:Generator_RowChangedName="DataChiPhiRowChanged" msprop:Generator_RowEvArgName="DataChiPhiRowChangeEvent" msprop:Generator_RowClassName="DataChiPhiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaThu" msprop:Generator_ColumnVarNameInTable="columnMaThu" msprop:Generator_ColumnPropNameInRow="MaThu" msprop:Generator_ColumnPropNameInTable="MaThuColumn" msprop:Generator_UserColumnName="MaThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenThu" msprop:Generator_ColumnVarNameInTable="columnTenThu" msprop:Generator_ColumnPropNameInRow="TenThu" msprop:Generator_ColumnPropNameInTable="TenThuColumn" msprop:Generator_UserColumnName="TenThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenLoai" msprop:Generator_ColumnVarNameInTable="columnTenLoai" msprop:Generator_ColumnPropNameInRow="TenLoai" msprop:Generator_ColumnPropNameInTable="TenLoaiColumn" msprop:Generator_UserColumnName="TenLoai">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoLuong" msprop:Generator_ColumnVarNameInTable="columnSoLuong" msprop:Generator_ColumnPropNameInRow="SoLuong" msprop:Generator_ColumnPropNameInTable="SoLuongColumn" msprop:Generator_UserColumnName="SoLuong" type="xs:int" minOccurs="0" />
+              <xs:element name="MaThucAnSang" msprop:Generator_ColumnVarNameInTable="columnMaThucAnSang" msprop:Generator_ColumnPropNameInRow="MaThucAnSang" msprop:Generator_ColumnPropNameInTable="MaThucAnSangColumn" msprop:Generator_UserColumnName="MaThucAnSang">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLThucAnSang" msprop:Generator_ColumnVarNameInTable="columnSLThucAnSang" msprop:Generator_ColumnPropNameInRow="SLThucAnSang" msprop:Generator_ColumnPropNameInTable="SLThucAnSangColumn" msprop:Generator_UserColumnName="SLThucAnSang" type="xs:double" minOccurs="0" />
+              <xs:element name="MaThucAnTrua" msprop:Generator_ColumnVarNameInTable="columnMaThucAnTrua" msprop:Generator_ColumnPropNameInRow="MaThucAnTrua" msprop:Generator_ColumnPropNameInTable="MaThucAnTruaColumn" msprop:Generator_UserColumnName="MaThucAnTrua" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLThucAnTrua" msprop:Generator_ColumnVarNameInTable="columnSLThucAnTrua" msprop:Generator_ColumnPropNameInRow="SLThucAnTrua" msprop:Generator_ColumnPropNameInTable="SLThucAnTruaColumn" msprop:Generator_UserColumnName="SLThucAnTrua" type="xs:double" minOccurs="0" />
+              <xs:element name="MaThucAnToi" msprop:Generator_ColumnVarNameInTable="columnMaThucAnToi" msprop:Generator_ColumnPropNameInRow="MaThucAnToi" msprop:Generator_ColumnPropNameInTable="MaThucAnToiColumn" msprop:Generator_UserColumnName="MaThucAnToi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SlThucAnToi" msprop:Generator_ColumnVarNameInTable="columnSlThucAnToi" msprop:Generator_ColumnPropNameInRow="SlThucAnToi" msprop:Generator_ColumnPropNameInTable="SlThucAnToiColumn" msprop:Generator_UserColumnName="SlThucAnToi" type="xs:double" minOccurs="0" />
+              <xs:element name="TongChiPhi" msprop:Generator_ColumnVarNameInTable="columnTongChiPhi" msprop:Generator_ColumnPropNameInRow="TongChiPhi" msprop:Generator_ColumnPropNameInTable="TongChiPhiColumn" msprop:Generator_UserColumnName="TongChiPhi" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataChiPhi" />
+      <xs:field xpath="mstns:MaThu" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
