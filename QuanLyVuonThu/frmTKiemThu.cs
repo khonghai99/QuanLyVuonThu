@@ -23,10 +23,7 @@ namespace QuanLyVuonThu
         nhanVienController nhanVienController = new nhanVienController();
         TrangThaiController TrangThaiController = new TrangThaiController();
         thuController thuController = new thuController();
-        string maNhanvien = "";
         string maThu = "";
-        string maThucAn = "";
-        string maChuong = "";
         int soLuongThuPrevious = 0;
         int soLuongThu = 0;
         List<ModelTrangThai> trangThais = new List<ModelTrangThai>();
@@ -605,7 +602,7 @@ namespace QuanLyVuonThu
         private void BtnTimKiemThu_Click(object sender, EventArgs e)
         {
             string sql = " select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from loai,thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
-               "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu and loai.maloai = Thu.maloai and (thu.mathu  like '%" + txtTimKiemThu.Text + "%' or thu.tenthu like '%" + txtTimKiemThu.Text + "%' or loai.maloai like '%" + txtTimKiemThu.Text + "%' or thu.kieusinh like '%" + txtTimKiemThu.Text + "%' or thu.nguongoc like '%" + txtTimKiemThu.Text + "%' )";
+               "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu and loai.maloai = Thu.maloai and (thu.mathu  like '%" + txtTimKiemThu.Text + "%' or thu.tenthu like '%" + txtTimKiemThu.Text + "%' or loai.tenloai like '%" + txtTimKiemThu.Text + "%' or thu.kieusinh like '%" + txtTimKiemThu.Text + "%' or thu.nguongoc like '%" + txtTimKiemThu.Text + "%' )";
             dtgvTimKiemThu.DataSource = dtBase.DocDL(sql);
             dtgvTimKiemThu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }

@@ -573,8 +573,6 @@ namespace QuanLyVuonThu
             }
             else
             {
-                DataTable dtgvThu1 = null;
-
                 if (click == 1)
                 {
                     SqlDataReader reader = dtBase.command("Select mathu from Thu where" + " MaThu != '" + (txtMaThu.Text).Trim() + "'").ExecuteReader();
@@ -811,7 +809,7 @@ namespace QuanLyVuonThu
         {
             // dtBase là class kết nối database khai báo trên đầu
             string sql = " select   thu.MaThu,   tenThu,   thu.maLoai,   chuong.maChuong,soLuong,   sachDo,   thu.TenKhoaHoc,      tenTA,   tenTV,   kieuSinh, gioiTinh, thu.NgayVao, nguonGoc,dacDiem, ngaySinh,  tuoiTho,MaThucAnSang,SLThucAnSang,MaThucAnTrua,SLThucAnTrua,MaThucAnToi,SlThucAnToi ,  Anh from loai,thu, chuong, Thu_Chuong,Thu_ThucAn  where Thu_Chuong.MaChuong = Chuong.MaChuong " +
-                "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu and loai.maloai = Thu.maloai and (thu.mathu  like '%" + txtTimKiemThu.Text + "%' or thu.tenthu like '%" + txtTimKiemThu.Text + "%' or loai.maloai like '%" + txtTimKiemThu.Text + "%' or thu.kieusinh like '%" + txtTimKiemThu.Text + "%' or thu.nguongoc like '%" + txtTimKiemThu.Text + "%' )";
+                "and Thu.MaThu = Thu_Chuong.MaThu and Thu_ThucAn.MaThu = Thu.MaThu and loai.maloai = Thu.maloai and (thu.mathu  like '%" + txtTimKiemThu.Text + "%' or thu.tenthu like '%" + txtTimKiemThu.Text + "%' or loai.tenloai like '%" + txtTimKiemThu.Text + "%' or thu.kieusinh like '%" + txtTimKiemThu.Text + "%' or thu.nguongoc like '%" + txtTimKiemThu.Text + "%' )";
             Golobal.GolobalThu.giatritimkiem = txtTimKiemThu.Text;
             Golobal.GolobalThu.kquaTimKiemThu = dtBase.DocDL(sql);
             frmTKiemThu frmTKiemThu = new frmTKiemThu();
@@ -1230,8 +1228,7 @@ namespace QuanLyVuonThu
                 }
                 maxMaChuong += 1;
                 string sql = " insert into chuong values(N'C" + maxMaChuong + "',N'" + cbbTenLoai.Text + "',N'" + txtMaKhuChuong.Text + "','" + Convert.ToDouble(txtDienTichChuong.Text)
-                       + "','" + Convert.ToDouble(txtChieuCaoChuong.Text) + "',N'" + txtSoLuongThuChuong.Text
-                       + "',N'" + TrangThaiController.getMaTrangThai(cbbTrangthai.Text) + "',N'" + nhanVienController.getMaNhanVien(cbbNhanVienTrongCoi.Text)
+                       + "','" + Convert.ToDouble(txtChieuCaoChuong.Text) + "',0,N'" + TrangThaiController.getMaTrangThai(cbbTrangthai.Text) + "',N'" + nhanVienController.getMaNhanVien(cbbNhanVienTrongCoi.Text)
                        + "',N'" + txtGhiChu.Text + "' )";
                 dtBase.CapNhatDuLieu(sql);
                 MessageBox.Show("bạn đã thêm thành công");
@@ -1681,6 +1678,22 @@ namespace QuanLyVuonThu
                 "INNER JOIN Loai ON Thu.MaLoai = Loai.MaLoai";
             string rpt = "rpChiPhi";
             export_excel(str, rpt);
+        }
+
+        private void BtnClearNV_Click(object sender, EventArgs e)
+        {
+            txtMaNhanVien.Text = "";
+            txtTenNhanVien.Text = "";
+            txtDiaChi.Text = "";
+            txtGioiTinh.Text = "";
+            dtpNgaySinhNV.Text = "";
+            txtDienThoai.Text = "";
+            pbAnhNhanVien.Image = null;
+        }
+
+        private void TxtTimKiemChuong_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

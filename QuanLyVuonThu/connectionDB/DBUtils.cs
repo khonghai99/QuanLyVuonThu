@@ -11,7 +11,7 @@ namespace QuanLyVuonThu
     {
         public static SqlConnection GetDBConnection()
         {
-            string datasource = @"DESKTOP-0JQIJ6M";
+            string datasource = @"DESKTOP-U8TRL8V";
             string database = "QuanLyVuonThu";
             string username = "sa";
             string password = "123";

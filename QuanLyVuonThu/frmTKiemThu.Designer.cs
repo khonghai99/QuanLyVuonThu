@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbbSLThucAnSang = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@
             this.btnTimKiemThu = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dtgvTimKiemThu = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbThu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTimKiemThu)).BeginInit();
@@ -382,6 +384,7 @@
             this.txtMaThu.Name = "txtMaThu";
             this.txtMaThu.Size = new System.Drawing.Size(139, 26);
             this.txtMaThu.TabIndex = 109;
+            this.toolTip1.SetToolTip(this.txtMaThu, "mã thú");
             // 
             // label72
             // 
@@ -401,6 +404,7 @@
             this.txtTenThu.Name = "txtTenThu";
             this.txtTenThu.Size = new System.Drawing.Size(139, 26);
             this.txtTenThu.TabIndex = 121;
+            this.toolTip1.SetToolTip(this.txtTenThu, "tên thú");
             // 
             // label71
             // 
@@ -546,6 +550,7 @@
             this.cbbMaChuong.Name = "cbbMaChuong";
             this.cbbMaChuong.Size = new System.Drawing.Size(139, 24);
             this.cbbMaChuong.TabIndex = 146;
+            this.toolTip1.SetToolTip(this.cbbMaChuong, "mã chuồng");
             // 
             // label21
             // 
@@ -565,6 +570,7 @@
             this.cbbMaLoai.Name = "cbbMaLoai";
             this.cbbMaLoai.Size = new System.Drawing.Size(139, 24);
             this.cbbMaLoai.TabIndex = 145;
+            this.toolTip1.SetToolTip(this.cbbMaLoai, "mã loài");
             // 
             // label20
             // 
@@ -724,6 +730,7 @@
             this.txtTimKiemThu.Name = "txtTimKiemThu";
             this.txtTimKiemThu.Size = new System.Drawing.Size(261, 27);
             this.txtTimKiemThu.TabIndex = 112;
+            this.toolTip1.SetToolTip(this.txtTimKiemThu, "tìm kiếm");
             // 
             // btnTimKiemThu
             // 
@@ -846,5 +853,6 @@
         private System.Windows.Forms.ComboBox cbbSLThucAnSang;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridView dtgvTimKiemThu;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
