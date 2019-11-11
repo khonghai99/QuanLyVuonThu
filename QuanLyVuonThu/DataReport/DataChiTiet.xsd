@@ -7,20 +7,14 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QuanLyVuonThuConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QuanLyVuonThuConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuanLyVuonThu.Properties.Settings.GlobalReference.Default.QuanLyVuonThuConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataOmTableAdapter" GeneratorDataComponentClassName="DataOmTableAdapter" Name="DataOm" UserDataComponentName="DataOmTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataChiTietTableAdapter" GeneratorDataComponentClassName="DataChiTietTableAdapter" Name="DataChiTiet" UserDataComponentName="DataChiTietTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="QuanLyVuonThuConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Thu.MaThu, Thu.TenThu, Loai.TenLoai, Thu.SoLuong, Thu.NguonGoc, Thu.DacDiem, SuKien.TenSukien, KhacPhuc.TenCachKhacPhuc, NhanVien.TenNhanVien, Chuong.MaChuong
-FROM            Chuong INNER JOIN
-                         Loai ON Chuong.MaLoai = Loai.MaLoai INNER JOIN
-                         Thu ON Loai.MaLoai = Thu.MaLoai INNER JOIN
-                         Thu_Chuong ON Chuong.MaChuong = Thu_Chuong.MaChuong INNER JOIN
-                         Thu_SuKien ON Thu.MaThu = Thu_SuKien.MaThu INNER JOIN
-                         NhanVien ON Chuong.NhanVienTrongCoi = NhanVien.MaNhanVien CROSS JOIN
-                         KhacPhuc CROSS JOIN
-                         SuKien</CommandText>
+                    <CommandText>SELECT        Thu.MaThu, Thu.TenThu, Loai.TenLoai, Thu.SachDo, Thu.TenKhoaHoc, Thu.TenTA, Thu.TenTV, Thu.NguonGoc, Thu.DacDiem, Thu.TuoiTho
+FROM            Loai INNER JOIN
+                         Thu ON Loai.MaLoai = Thu.MaLoai</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -30,13 +24,13 @@ FROM            Chuong INNER JOIN
               <Mapping SourceColumn="MaThu" DataSetColumn="MaThu" />
               <Mapping SourceColumn="TenThu" DataSetColumn="TenThu" />
               <Mapping SourceColumn="TenLoai" DataSetColumn="TenLoai" />
-              <Mapping SourceColumn="SoLuong" DataSetColumn="SoLuong" />
+              <Mapping SourceColumn="SachDo" DataSetColumn="SachDo" />
+              <Mapping SourceColumn="TenKhoaHoc" DataSetColumn="TenKhoaHoc" />
+              <Mapping SourceColumn="TenTA" DataSetColumn="TenTA" />
+              <Mapping SourceColumn="TenTV" DataSetColumn="TenTV" />
               <Mapping SourceColumn="NguonGoc" DataSetColumn="NguonGoc" />
               <Mapping SourceColumn="DacDiem" DataSetColumn="DacDiem" />
-              <Mapping SourceColumn="TenSukien" DataSetColumn="TenSukien" />
-              <Mapping SourceColumn="TenCachKhacPhuc" DataSetColumn="TenCachKhacPhuc" />
-              <Mapping SourceColumn="TenNhanVien" DataSetColumn="TenNhanVien" />
-              <Mapping SourceColumn="MaChuong" DataSetColumn="MaChuong" />
+              <Mapping SourceColumn="TuoiTho" DataSetColumn="TuoiTho" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -48,7 +42,7 @@ FROM            Chuong INNER JOIN
   <xs:element name="DataChiTiet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataChiTiet" msprop:Generator_UserDSName="DataChiTiet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataOm" msprop:Generator_TableClassName="DataOmDataTable" msprop:Generator_TableVarName="tableDataOm" msprop:Generator_RowChangedName="DataOmRowChanged" msprop:Generator_TablePropName="DataOm" msprop:Generator_RowDeletingName="DataOmRowDeleting" msprop:Generator_RowChangingName="DataOmRowChanging" msprop:Generator_RowEvHandlerName="DataOmRowChangeEventHandler" msprop:Generator_RowDeletedName="DataOmRowDeleted" msprop:Generator_RowClassName="DataOmRow" msprop:Generator_UserTableName="DataOm" msprop:Generator_RowEvArgName="DataOmRowChangeEvent">
+        <xs:element name="DataChiTiet" msprop:Generator_TableClassName="DataChiTietDataTable" msprop:Generator_TableVarName="tableDataChiTiet" msprop:Generator_TablePropName="_DataChiTiet" msprop:Generator_RowDeletingName="DataChiTietRowDeleting" msprop:Generator_RowChangingName="DataChiTietRowChanging" msprop:Generator_RowEvHandlerName="DataChiTietRowChangeEventHandler" msprop:Generator_RowDeletedName="DataChiTietRowDeleted" msprop:Generator_UserTableName="DataChiTiet" msprop:Generator_RowChangedName="DataChiTietRowChanged" msprop:Generator_RowEvArgName="DataChiTietRowChangeEvent" msprop:Generator_RowClassName="DataChiTietRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaThu" msprop:Generator_ColumnVarNameInTable="columnMaThu" msprop:Generator_ColumnPropNameInRow="MaThu" msprop:Generator_ColumnPropNameInTable="MaThuColumn" msprop:Generator_UserColumnName="MaThu">
@@ -72,7 +66,34 @@ FROM            Chuong INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SoLuong" msprop:Generator_ColumnVarNameInTable="columnSoLuong" msprop:Generator_ColumnPropNameInRow="SoLuong" msprop:Generator_ColumnPropNameInTable="SoLuongColumn" msprop:Generator_UserColumnName="SoLuong" type="xs:int" minOccurs="0" />
+              <xs:element name="SachDo" msprop:Generator_ColumnVarNameInTable="columnSachDo" msprop:Generator_ColumnPropNameInRow="SachDo" msprop:Generator_ColumnPropNameInTable="SachDoColumn" msprop:Generator_UserColumnName="SachDo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenKhoaHoc" msprop:Generator_ColumnVarNameInTable="columnTenKhoaHoc" msprop:Generator_ColumnPropNameInRow="TenKhoaHoc" msprop:Generator_ColumnPropNameInTable="TenKhoaHocColumn" msprop:Generator_UserColumnName="TenKhoaHoc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenTA" msprop:Generator_ColumnVarNameInTable="columnTenTA" msprop:Generator_ColumnPropNameInRow="TenTA" msprop:Generator_ColumnPropNameInTable="TenTAColumn" msprop:Generator_UserColumnName="TenTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenTV" msprop:Generator_ColumnVarNameInTable="columnTenTV" msprop:Generator_ColumnPropNameInRow="TenTV" msprop:Generator_ColumnPropNameInTable="TenTVColumn" msprop:Generator_UserColumnName="TenTV" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="NguonGoc" msprop:Generator_ColumnVarNameInTable="columnNguonGoc" msprop:Generator_ColumnPropNameInRow="NguonGoc" msprop:Generator_ColumnPropNameInTable="NguonGocColumn" msprop:Generator_UserColumnName="NguonGoc" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -87,38 +108,15 @@ FROM            Chuong INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TenSukien" msprop:Generator_ColumnVarNameInTable="columnTenSukien" msprop:Generator_ColumnPropNameInRow="TenSukien" msprop:Generator_ColumnPropNameInTable="TenSukienColumn" msprop:Generator_UserColumnName="TenSukien">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TenCachKhacPhuc" msprop:Generator_ColumnVarNameInTable="columnTenCachKhacPhuc" msprop:Generator_ColumnPropNameInRow="TenCachKhacPhuc" msprop:Generator_ColumnPropNameInTable="TenCachKhacPhucColumn" msprop:Generator_UserColumnName="TenCachKhacPhuc">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TenNhanVien" msprop:Generator_ColumnVarNameInTable="columnTenNhanVien" msprop:Generator_ColumnPropNameInRow="TenNhanVien" msprop:Generator_ColumnPropNameInTable="TenNhanVienColumn" msprop:Generator_UserColumnName="TenNhanVien">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="MaChuong" msprop:Generator_ColumnVarNameInTable="columnMaChuong" msprop:Generator_ColumnPropNameInRow="MaChuong" msprop:Generator_ColumnPropNameInTable="MaChuongColumn" msprop:Generator_UserColumnName="MaChuong">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="TuoiTho" msprop:Generator_ColumnVarNameInTable="columnTuoiTho" msprop:Generator_ColumnPropNameInRow="TuoiTho" msprop:Generator_ColumnPropNameInTable="TuoiThoColumn" msprop:Generator_UserColumnName="TuoiTho" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataChiTiet" />
+      <xs:field xpath="mstns:MaThu" />
+    </xs:unique>
   </xs:element>
 </xs:schema>
